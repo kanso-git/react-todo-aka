@@ -41,7 +41,9 @@ var CardList = React.createClass({
       centeredSlides:true,
       slidesOffsetBefore:10,
       slidesOffsetBefore:10,
-      slidesPerView:'auto'
+      slidesPerView:'auto',
+      pagination: '.swiper-pagination',
+      paginationType: 'progress'
     });
     this.swiper.on('onTransitionEnd', function(_swiper){
       // _swiper.translate += (_swiper.activeIndex -1)*30;
@@ -67,6 +69,7 @@ var CardList = React.createClass({
         <div className="swiper-wrapper ">
             {renderStartingCards()}
        </div>
+       <div className="swiper-pagination"></div>
    </div>
     )
   }
