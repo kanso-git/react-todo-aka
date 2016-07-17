@@ -1,33 +1,46 @@
-
-  .top-bar{
-    .top-bar-left{
+.navigation{
+   display:flex;
+   flex-direction:row;
+   justify-content: space-around;
+    height: 44px;
+    background-color: white;
+    .navigation-left{
+      display:flex;
+      flex-direction:column;
       .menu{
         background-color: $LMPOrnage;
         position: absolute;
         top:0;
         left:0;
-        width:4.5rem;
-        height: 3.4rem;
+        width:45px;
+        height:44px;
         justify-content: center;
         align-items: center;
         display: flex;
       }
     }
-    .top-bar-right{
-      .menu{
+    .navigation-right{
+      display:flex;
+      flex-direction:column;
+      .menu {
         justify-content: center;
         align-items: center;
         display: flex;
         background-color: $LMPOrnage;
         position: inherit;
-        width:4.5rem;
-        height:3.4rem;
-        margin-top: -5px;
-        margin-right: -5px;
-        margin-bottom: -5px;
+        width:45px;
+        height:44px;
+        position: absolute;
+        top:0;
+        right:0;
+      }
+    }
+    .navigation-title{
+      p{
+       color:$LMPOrnage;
       }
     }
     .fa-lg{
       color:white;
     }
-  }
+}
