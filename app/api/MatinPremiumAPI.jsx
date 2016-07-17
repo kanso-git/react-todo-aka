@@ -3,7 +3,6 @@ var axios = require('axios');
 //http://api.openweathermap.org/data/2.5/weather?q=Orbe&APPID=c7d4832a2c992b89247a8f5c678d5c68&units=metric
 const LMP_API_URL = '';
 
-
 module.exports = {
 
   getCards:function(){

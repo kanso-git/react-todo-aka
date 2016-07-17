@@ -1,4 +1,3 @@
-
 /*
 *  Basic Reset
 */
@@ -10,10 +9,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 /**
  * Basics Styles
  */
+
 html {
     font-size: 62.5%;
 }
@@ -25,50 +24,47 @@ body {
     line-height: 1.6;
     color: #666;
 }
-
 a {
     text-decoration: none;
     color: #3498db;
 }
-    a:hover {
-        color: #2980b9;
-    }
-
+a:hover {
+    color: #2980b9;
+}
 h2 {
     line-height: 1.2;
     margin-bottom: 1.6rem;
 }
-
 .wrapper {
     max-width: 300px;
     margin: 0px 0px;
     padding-left: 1em;
     padding-right: 1em;
 }
-
 /**
  * Helpers
  */
+
 .border-tlr-radius {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
 }
-
-.text-center { text-align: center; }
-
-.radius { border-radius: 2px; }
-
-.padding-tb { padding-top: 1.6rem; padding-bottom: 1.6rem;}
-
-.shadowDepth0 { box-shadow: 0 1px 3px rgba(0,0,0, 0.12); }
-
-.shadowDepth1 {
-   box-shadow:
-        0 1px 3px rgba(0,0,0, 0.12),
-        0 1px 2px rgba(0,0,0, 0.24);
+.text-center {
+    text-align: center;
 }
-
-
+.radius {
+    border-radius: 2px;
+}
+.padding-tb {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+}
+.shadowDepth0 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.shadowDepth1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
 /**
  * Card Styles
  */
@@ -77,12 +73,10 @@ h2 {
     background-color: #fff;
     margin-bottom: 1.6rem;
 }
-
-.card__padding {
+.card-padding {
     padding: 1.6rem;
 }
-
-.card__image {
+.card-image {
     min-height: 230px;
     background-color: #eee;
     position: relative;
@@ -96,16 +90,13 @@ h2 {
         opacity: 0.65;
         width: 100%;
     }
-
     .caption-content {
         padding: 0.2rem;
         margin-bottom: 2rem;
         font-weight: bold;
     }
-
 }
-
-    /*
+/*
     .card__image img {
         width: 100%;
         max-width: 100%;
@@ -113,84 +104,73 @@ h2 {
     }
     */
 
-    .card__image img {
-      width:300px;
-      max-width: 100%;
-      height:230px;
-
-      display: block;
-    }
-
-.card__content {
+.card-image img {
+    width: 300px;
+    max-width: 100%;
+    height: 230px;
+    display: block;
+}
+.card-content {
     position: relative;
     height: 150px;
-    hr{
-      margin: 0px;
+    hr {
+        margin: 0px;
     }
 }
-
 /* card meta */
 
-.LMPOrnage{
-  color: $LMPOrnage;
+.LMPOrnage {
+    color: $LMPOrnage;
 }
-.card__meta__top{
-  min-height: 40px;
-  padding-left: 10px;
-  padding-top: 10px;
+.card-meta-top {
+    min-height: 40px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
-.card__meta time {
+.card-meta time {
     font-size: 1.5rem;
     color: #bbb;
     margin-left: 0.8rem;
 }
-
-.fa-xxs{
-  font-size: 12px;
-  float:right;
-  margin-right: -50px;
-  margin-top: 12px;
+.fa-xxs {
+    font-size: 12px;
+    float: right;
+    margin-right: -50px;
+    margin-top: 12px;
 }
 /* card article */
-.card__article a {
+
+.card-article a {
     text-decoration: none;
     color: #444;
     transition: all 0.5s ease;
 }
-    .card__article a:hover {
-        color: #2980b9;
-    }
-
+.card-article a:hover {
+    color: #2980b9;
+}
 /* card action */
-.card__action {
+
+.card-action {
     overflow: hidden;
     padding-right: 1.6rem;
     padding-left: 1.6rem;
     padding-bottom: 1.6rem;
 }
-
-.card__author {
-
+.card-author {} .card-author img,
+.card-author-content {
+    display: inline-block;
+    vertical-align: middle;
 }
-
-    .card__author img,
-    .card__author-content {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .card__author img{
-        border-radius: 50%;
-        margin-right: 0.6em;
-    }
-
-.card__share {
+.card-author img {
+    border-radius: 50%;
+    margin-right: 0.6em;
+}
+.card-share {
     float: right;
     position: relative;
     margin-top: -42px;
 }
-
-.card__social {
+.card-social {
     position: absolute;
     top: 0;
     right: 0;
@@ -200,14 +180,14 @@ h2 {
     transform: translateX(0px);
     transition: transform 0.35s ease;
 }
-    .card__social--active {
-        visibility: visible;
-        /*z-index: 3;*/
-        transform: translateZ(0);
-        transform: translateX(-48px);
-        transition: transform 0.35s ease;
-    }
+.card-social-active {
+    visibility: visible;
+    /*z-index: 3;*/
 
+    transform: translateZ(0);
+    transform: translateX(-48px);
+    transition: transform 0.35s ease;
+}
 .share-toggle {
     z-index: 2;
 }
@@ -216,23 +196,20 @@ h2 {
     font-family: 'FontAwesome';
     color: $LMPOrnage;
 }
-    .share-toggle.share-expanded:before {
-        content: "\f00d";
-    }
-.like-icon{
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
-  text-align: center;
-  border-radius: 50%;
-  background-color: #fff;
-  transition: all 0.3s ease;
-  outline: 0;
-
-  box-shadow:
-          0 2px 4px rgba(0,0,0, 0.12),
-          0 2px 4px rgba(0,0,0, 0.24);
+.share-toggle.share-expanded:before {
+    content: "\f00d";
+}
+.like-icon {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    outline: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
 }
 .share-icon {
     display: inline-block;
@@ -244,24 +221,17 @@ h2 {
     background-color: #fff;
     transition: all 0.3s ease;
     outline: 0;
-
-    box-shadow:
-            0 2px 4px rgba(0,0,0, 0.12),
-            0 2px 4px rgba(0,0,0, 0.24);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
 }
-    .share-icon:hover,
-    .share-icon:focus {
-        box-shadow:
-            0 3px 6px rgba(0,0,0, 0.12),
-            0 3px 6px rgba(0,0,0, 0.24);
-
-        -webkit-transform: scale(1.2);
-        -moz-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-        -o-transform: scale(1.2);
-        transform: scale(1.2);
-    }
-
+.share-icon:hover,
+.share-icon:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
 .facebook {
     background-color: #3b5998;
 }
@@ -271,26 +241,23 @@ h2 {
 .googleplus {
     background-color: #d3492c;
 }
-
 .facebook,
 .twitter,
 .googleplus {
     color: #fff;
 }
-
-    .facebook:hover,
-    .twitter:hover,
-    .googleplus:hover {
-        color: #eee;
-    }
-.cards-wrap{
+.facebook:hover,
+.twitter:hover,
+.googleplus:hover {
+    color: #eee;
+}
+.cards-wrap {
     background: #aaa;
     margin: 0 auto;
     display: inline-flex;
     overflow: hidden;
-    background:url(http://www.mazda-speed-dating.ch/_Resources/Static/Packages/Dotpulse.SpeedDating/Assets/background-clouds.jpg) repeat-y 50%;
+    background: url(http://www.mazda-speed-dating.ch/_Resources/Static/Packages/Dotpulse.SpeedDating/Assets/background-clouds.jpg) repeat-y 50%;
 }
-.cards-background{
-  background:url(http://www.mazda-speed-dating.ch/_Resources/Static/Packages/Dotpulse.SpeedDating/Assets/background-clouds.jpg) repeat-y 50%;
-
+.cards-background {
+    background: url(http://www.mazda-speed-dating.ch/_Resources/Static/Packages/Dotpulse.SpeedDating/Assets/background-clouds.jpg) repeat-y 50%;
 }

@@ -6,11 +6,10 @@ var Article = React.createClass({
     //var { title,imageUrl,shortDesc} = this.props;
     return(
       <div>
-       article sample
+        article sample
       </div>
     )
   }
-
 });
 
 module.exports = Article;

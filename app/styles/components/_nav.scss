@@ -1,47 +1,47 @@
-.navigation{
-   display:flex;
-   flex-direction:row;
-   justify-content: space-around;
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     height: 44px;
     background-color: white;
-    .navigation-left{
-      display:flex;
-      flex-direction:column;
-      .menu{
-        background-color: $LMPOrnage;
-        position: absolute;
-        top:0;
-        left:0;
-        width:45px;
-        height:44px;
-        justify-content: center;
-        align-items: center;
+    .navigation-left {
         display: flex;
-      }
+        flex-direction: column;
+        .menu {
+            background-color: $LMPOrnage;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45px;
+            height: 44px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
     }
-    .navigation-right{
-      display:flex;
-      flex-direction:column;
-      .menu {
-        justify-content: center;
-        align-items: center;
+    .navigation-right {
         display: flex;
-        background-color: $LMPOrnage;
-        position: inherit;
-        width:45px;
-        height:44px;
-        position: absolute;
-        top:0;
-        right:0;
-      }
+        flex-direction: column;
+        .menu {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background-color: $LMPOrnage;
+            position: inherit;
+            width: 45px;
+            height: 44px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     }
-    .navigation-title{
-      p{
-       padding-top: 8px;
-       color:$LMPOrnage;
-      }
+    .navigation-title {
+        p {
+            padding-top: 8px;
+            color: $LMPOrnage;
+        }
     }
-    .fa-lg{
-      color:white;
+    .fa-lg {
+        color: white;
     }
 }

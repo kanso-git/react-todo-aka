@@ -5,11 +5,11 @@ var Footer = require('Footer');
 var Main = (props)=>{
   return (
     <div>
-      <Nav/>
-      <div className="wrap-center">
-       {props.children}
-      </div>
-      <Footer/>
+        <Nav/>
+        <div className="wrap-center">
+            {props.children}
+        </div>
+        <Footer/>
     </div>
   )
 }

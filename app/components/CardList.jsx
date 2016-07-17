@@ -11,9 +11,9 @@ var CardList = React.createClass({
   },
   componentDidMount:function(){
 
-      $('.card__share > a').on('click', function(e){
+      $('.card-share > a').on('click', function(e){
         e.preventDefault() // prevent default action - hash doesn't appear in url
-        $(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
+        $(this).parent().find( 'div' ).toggleClass( 'card-social-active' );
         $(this).toggleClass('share-expanded');
       });
 
