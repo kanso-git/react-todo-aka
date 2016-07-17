@@ -7,12 +7,22 @@ module.exports = {
 
   getCards:function(){
     return [
+
+      {
+        id:0,
+        theme:'BIRTHDAY',
+        isLiked:1,
+        likeNbr:760,
+        title:'Annik\'s Birthday',
+        imageUrl:'https://image.freepik.com/free-vector/colorful-happy-birthday-card_23-2147511988.jpg',
+        shortDesc:'Happy Birthday Annik from Le Matin du Soir TEAM'
+      },
       {
         id:1,
         theme:'RENCONTRE',
         isLiked:1,
         likeNbr:76,
-        title:'L\’amour avec un inconn',
+        title:'L\’amour avec un inconnu',
         imageUrl:'http://files.newsnetz.ch/upload//8/6/86695.jpg',
         shortDesc:'De plus en plus de femmes s’inscrivent sur les sites de rencontres passagères'
       },
