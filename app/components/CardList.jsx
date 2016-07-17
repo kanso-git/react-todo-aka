@@ -43,7 +43,8 @@ var CardList = React.createClass({
       slidesOffsetBefore:10,
       slidesPerView:'auto',
       pagination: '.swiper-pagination',
-      paginationType: 'progress'
+      paginationType: 'progress',
+      slidesPerColumn: (/Mobi/.test(navigator.userAgent)?1 :2)
     });
     this.swiper.on('onTransitionEnd', function(_swiper){
       // _swiper.translate += (_swiper.activeIndex -1)*30;
