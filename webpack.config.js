@@ -9,6 +9,7 @@ module.exports = {
   ],
   externals: {
     jquery: 'jQuery'
+
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -22,6 +23,12 @@ module.exports = {
   },
   resolve: {
     root: __dirname,
+    modulesDirectories:[
+      'node_modules',
+      './app/components',
+      './app/api',
+      './app/scripts'
+    ],
     alias: {
       applicationStyles: 'app/styles/app.scss'
     },

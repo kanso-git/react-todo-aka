@@ -1,0 +1,33 @@
+
+  .top-bar{
+    .top-bar-left{
+      .menu{
+        background-color: $LMPOrnage;
+        position: absolute;
+        top:0;
+        left:0;
+        width:4.5rem;
+        height: 3.4rem;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+    }
+    .top-bar-right{
+      .menu{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background-color: $LMPOrnage;
+        position: inherit;
+        width:4.5rem;
+        height:3.4rem;
+        margin-top: -5px;
+        margin-right: -5px;
+        margin-bottom: -5px;
+      }
+    }
+    .fa-lg{
+      color:white;
+    }
+  }
