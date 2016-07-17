@@ -23,8 +23,8 @@ var CardList = React.createClass({
     var swiperWidth= $("#swiperId").width();
     var slidesPerView = Math.floor(swiperWidth/320);
         slidesPerView =(slidesPerView === 0 ?1:(slidesPerView >4?4:slidesPerView));
-        
-    $('.swiper-container').width(slidesPerView*320);
+
+    $('.swiper-container').width($("#swiperId").width());
 
     // this.setState({
     //   slidesPerView:slidesPerView
@@ -35,16 +35,17 @@ var CardList = React.createClass({
     //
     this.swiper = new Swiper('#swiperId', {
       preloadImages: false,
+      centeredSlides:true,
       keyboardControl:true,
       lazyLoading: true,
       centeredSlides:true,
       slidesOffsetBefore:10,
       slidesOffsetBefore:10,
-      slidesPerView:slidesPerView
+      slidesPerView:'auto'
     });
     this.swiper.on('onTransitionEnd', function(_swiper){
-       _swiper.translate += (_swiper.activeIndex -1)*27;
-       _swiper.setWrapperTranslate(_swiper.translate);
+      // _swiper.translate += (_swiper.activeIndex -1)*30;
+      // _swiper.setWrapperTranslate(_swiper.translate);
     });
   },
   render:function(){
@@ -62,8 +63,8 @@ var CardList = React.createClass({
     };
     return(
 
-  <div className="swiper-container" id="swiperId">
-        <div className="swiper-wrapper">
+  <div className="swiper-container cards-background" id="swiperId">
+        <div className="swiper-wrapper ">
             {renderStartingCards()}
        </div>
    </div>

@@ -100,7 +100,7 @@ module.exports = {
          likeNbr:12,
          title:"Le SUV Mercedes-Benz GLC devient à son tour un coupé",
          imageUrl:'http://files.newsnetz.ch/story/1/5/5/15535253/6/teasersmall16x9.jpg',
-         shortDesc:"Dans cette catégorie, le design supplante les aspects pratiques. Le constructeur l’a bien compris en sortant ce nouveau modèle très tendance."
+         shortDesc:"Dans cette catégorie,  Le constructeur l’a bien compris en sortant ce nouveau modèle très tendance."
       }
 
     ];

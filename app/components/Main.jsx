@@ -4,13 +4,9 @@ var Nav = require('Nav');
 var Main = (props)=>{
   return (
     <div>
-
-
-          <div className="">
-           {props.children}
-          </div>
-        
-
+      <div className="wrap-center">
+       {props.children}
+      </div>
     </div>
   )
 }
