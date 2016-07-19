@@ -1,24 +1,6 @@
-/*
-*  Basic Reset
-*/
 
-body {
-    background-color: #f0efe4;
-    color: #484848;
-}
-a {
-    text-decoration: none;
-    color: #3498db;
-}
-a:hover {
-    color: #2980b9;
-}
-h2 {
-    line-height: 1.2;
-    margin-bottom: 1.6rem;
-}
 .wrapper {
-    max-width: 300px;
+    max-width: $LMPCardWidth;
     margin: 0px 0px;
     padding-left: 1em;
     padding-right: 1em;
@@ -52,14 +34,13 @@ h2 {
  */
 
 .card {
-    background-color: #fff;
+    background-color:$LMPWhite;
     margin-bottom: 1.6rem;
 }
 .card-padding {
     padding: 1.6rem;
 }
 .card-image {
-    min-height: 230px;
     background-color: #eee;
     position: relative;
     .caption-container {
@@ -68,36 +49,32 @@ h2 {
         left: 0;
         background-color: #000;
         min-height: 75px;
-        opacity: 0.65;
+        opacity: 0.7;
         width: 100%;
     }
     .caption-content {
-       margin-left: 25px;
-        color: #fff;
+        margin-left: 25px;
+        color:#fff;
         font-size: 18px;
         text-transform: uppercase;
         padding: 0.2rem;
         margin-bottom: 2rem;
         font-weight: bold;
+
     }
 }
-/*
-    .card__image img {
-        width: 100%;
-        max-width: 100%;
-        display: block;
-    }
-    */
+
 
 .card-image img {
-    width: 300px;
+    width: $LMPCardWidth;
     max-width: 100%;
-    height: 230px;
+    height: $LMPCardImgHeight;
     display: block;
 }
 .card-content {
     position: relative;
-    height: 150px;
+    height: $LMPCardLowerContentHeight;
+    font-size: 0.85rem;
     hr {
         margin: 0px;
     }
@@ -108,12 +85,13 @@ h2 {
     color: $LMPOrnage;
 }
 .card-meta-top {
-    min-height: 40px;
+    height: $LMPCardTitleHeight;
     padding-left: 10px;
     padding-top: 10px;
+      font-size: 1rem;
 }
 .card-meta time {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #bbb;
     margin-left: 0.8rem;
 }
@@ -123,16 +101,7 @@ h2 {
     margin-right: -50px;
     margin-top: 12px;
 }
-/* card article */
 
-.card-article a {
-    text-decoration: none;
-    color: #444;
-    transition: all 0.5s ease;
-}
-.card-article a:hover {
-    color: #2980b9;
-}
 /* card action */
 
 .card-action {
@@ -203,7 +172,7 @@ h2 {
     line-height: 48px;
     text-align: center;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: $LMPWhite;
     transition: all 0.3s ease;
     outline: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
@@ -236,14 +205,17 @@ h2 {
 .googleplus:hover {
     color: #eee;
 }
-.cards-wrap {
-    background: #aaa;
-    margin: 0 auto;
-    display: inline-flex;
-    overflow: hidden;
-    background: url(http://www.mazda-speed-dating.ch/_Resources/Static/Packages/Dotpulse.SpeedDating/Assets/background-clouds.jpg) repeat-y 50%;
+
+/* card article */
+
+.card-article a {
+
 }
+.card-article a:hover {
+
+}
+
 .cards-background {
-    background:#000;
+    background:$LMPBlack;
     //background: url(http://www.mazda-speed-dating.ch/_Resources/Static/Packages/Dotpulse.SpeedDating/Assets/background-clouds.jpg) repeat-y 50%;
 }
