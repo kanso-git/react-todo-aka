@@ -5,23 +5,25 @@ var Card = React.createClass({
    alert('toggleLike');
   },
   render:function(){
-    var { theme,title,imageUrl,shortDesc,isLiked,likeNbr} = this.props;
-    var heartClass  = "fa fa-heart";
+    var { theme,title,imageUrl,shortDesc,isLiked,likeNbr,articleNbr} = this.props;
+    var heartClass  = "like-transform fa fa-heart";
         heartClass += (parseInt(isLiked) === 1 ?"":"-o");
         heartClass +=" fa-lg LMPOrnage";
 
     return(
         <div className="wrapper swiper-slide">
-            <div className="card radius shadowDepth1">
+            <div className="card cadre shadowDepth1">
+                <i className="fa fa-history history-badge LMPOrnage " aria-hidden="true"></i>
+                <i className="fa fa-bookmark favorite-badge LMPOrnage" aria-hidden="true"></i>
                 <div className="card-meta-top">
                     <div className="text-left"><i className="fa fa-circle LMPOrnage"></i>&nbsp;{theme}</div>
                 </div>
-                <div className="card-image border-tlr-radius">
-                    <img src={imageUrl} alt="image" className="border-tlr-radius"/>
+                <div className="card-image">
+                    <img src={imageUrl} alt="image" />
                     <div className="caption-container">
-                        <p className="caption-content">
-                            {title}
-                        </p>
+                      <p className="caption-content">
+                          {title}
+                      </p>
                     </div>
                 </div>
                 <div className="card-content card-padding">
@@ -37,10 +39,11 @@ var Card = React.createClass({
                             <span className="fa fa-google-plus"></span>
                             </a>
                         </div>
-                        <a id="share" className="share-toggle share-icon" href="#"></a>
+                        <a id="share" className="share-toggle  share-icon-main" href="#"></a>
                     </div>
-                    <i className={heartClass} aria-hidden="true" onClick={this.toggleLike}></i>
-                    <i className="fa fa-heart fa-xxs LMPOrnage" aria-hidden="false">&nbsp;{likeNbr} j'aime</i>
+                    <i className={heartClass} aria-hidden="false" onClick={this.toggleLike}>
+                        <span className="fa-xxs LMPOrnage">&nbsp;{likeNbr} j'aime</span>
+                    </i>
                     <hr>
                     </hr>
                     <article className="card-article">
@@ -48,6 +51,7 @@ var Card = React.createClass({
                             {shortDesc}
                         </p>
                     </article>
+                    <i className="fa fa-files-o article-nbr LMPOrnage" aria-hidden="true">&nbsp;{articleNbr}</i>
                 </div>
             </div>
         </div>

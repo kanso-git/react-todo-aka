@@ -9,6 +9,10 @@
  * Helpers
  */
 
+.cadre {
+   border-radius: 10px;
+ }
+
 .border-tlr-radius {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
@@ -44,24 +48,27 @@
     background-color: #eee;
     position: relative;
     .caption-container {
+
         position: absolute;
         bottom: 0;
         left: 0;
-        background-color: #000;
-        min-height: 75px;
-        opacity: 0.7;
+        min-height: 60px;
         width: 100%;
+        opacity: 0.97;
+        background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8cmFkaWFsR3JhZGllbnQgaWQ9Imc5MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIxMDAlIiBjeT0iMTAwJSIgcj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMxOTMzNTYiIG9mZnNldD0iMSIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8cmVjdCB4PSItNTAiIHk9Ii01MCIgd2lkdGg9IjEwMSIgaGVpZ2h0PSIxMDEiIGZpbGw9InVybCgjZzkyKSIgLz4KPC9zdmc+);
+          .caption-content {
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+            color:#fff;
+            font-size: 1rem;
+            text-transform: uppercase;
+              margin-top: .8rem;
+            margin-bottom: .8rem;
+            font-weight: bold;
+        }
     }
-    .caption-content {
-        margin-left: 25px;
-        color:#fff;
-        font-size: 18px;
-        text-transform: uppercase;
-        padding: 0.2rem;
-        margin-bottom: 2rem;
-        font-weight: bold;
 
-    }
+
 }
 
 
@@ -76,7 +83,7 @@
     height: $LMPCardLowerContentHeight;
     font-size: 0.85rem;
     hr {
-        margin: 0px;
+        margin-top: -8px;
     }
 }
 /* card meta */
@@ -88,7 +95,7 @@
     height: $LMPCardTitleHeight;
     padding-left: 10px;
     padding-top: 10px;
-      font-size: 1rem;
+    font-size: 0.8rem;
 }
 .card-meta time {
     font-size: 1rem;
@@ -97,11 +104,11 @@
 }
 .fa-xxs {
     font-size: 12px;
-    float: right;
-    margin-right: -50px;
-    margin-top: 12px;
 }
 
+.like-transform{
+  transform: translate(-7px,-23px);
+}
 /* card action */
 
 .card-action {
@@ -120,6 +127,7 @@
     margin-right: 0.6em;
 }
 .card-share {
+    margin-right: -15px;
     float: right;
     position: relative;
     margin-top: -42px;
@@ -139,7 +147,7 @@
     /*z-index: 3;*/
 
     transform: translateZ(0);
-    transform: translateX(-48px);
+    transform: translateX(-18px);
     transition: transform 0.35s ease;
 }
 .share-toggle {
@@ -153,6 +161,30 @@
 .share-toggle.share-expanded:before {
     content: "\f00d";
 }
+.share-icon-main {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: $LMPWhite;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    outline: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.share-icon-main:hover,
+.share-icon-main:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
 .like-icon {
     display: inline-block;
     width: 35px;
@@ -167,12 +199,13 @@
 }
 .share-icon {
     display: inline-block;
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
     text-align: center;
     border-radius: 50%;
     background-color: $LMPWhite;
+    font-size: 22px;
     transition: all 0.3s ease;
     outline: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
@@ -187,18 +220,22 @@
     transform: scale(1.2);
 }
 .facebook {
-    background-color: #3b5998;
+    //background-color: #3b5998;
+    background-color:black;
 }
 .twitter {
-    background-color: #00abe3;
+    //background-color: #00abe3;
+      background-color:black;
 }
 .googleplus {
-    background-color: #d3492c;
+    //background-color: #d3492c;
+      background-color:black;
 }
 .facebook,
 .twitter,
 .googleplus {
     color: #fff;
+    border:2px solid white;
 }
 .facebook:hover,
 .twitter:hover,
@@ -207,7 +244,9 @@
 }
 
 /* card article */
-
+.card-article{
+  margin-top: -1rem;
+}
 .card-article a {
 
 }
@@ -215,7 +254,35 @@
 
 }
 
+.article-nbr{
+   position: absolute;
+   bottom: 0px;
+   right: 0px;
+   margin:5px;
+}
+.favorite-badge{
+  font-size: 2rem;
+  font-weight: normal;
+  position: absolute;
+  top: -2px;
+  right: 0px;
+  margin-right:15px;
+}
+.history-badge{
+  z-index: 1;
+  font-size: 1.8rem;
+  font-weight: normal;
+  position: absolute;
+  top: 3rem;
+  right: 0px;
+  margin-right:15px;
+
+}
 .cards-background {
     background:$LMPBlack;
-    //background: url(http://www.mazda-speed-dating.ch/_Resources/Static/Packages/Dotpulse.SpeedDating/Assets/background-clouds.jpg) repeat-y 50%;
+}
+
+.cards-background-desktop {
+    background:$LMPBlack;
+    background: url(http://www.walldevil.com/wallpapers/a31/nespresso-commercial-city-silhouette.jpg) repeat-y 50%;
 }

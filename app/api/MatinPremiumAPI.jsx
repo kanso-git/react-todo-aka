@@ -10,6 +10,7 @@ module.exports = {
 
       {
         id:0,
+        articleNbr:6,
         theme:'BIRTHDAY',
         isLiked:1,
         likeNbr:760,
@@ -19,6 +20,7 @@ module.exports = {
       },
       {
         id:1,
+        articleNbr:2,
         theme:'RENCONTRE',
         isLiked:1,
         likeNbr:76,
@@ -28,64 +30,71 @@ module.exports = {
       },
       {
          id:2,
+         articleNbr:1,
          theme:'FOOTBALL',
          isLiked:0,
          likeNbr:12,
-         title:'Embolo: «Voilà pourquoi j\'ai le 36 dans le dos»',
+         title:'Embolo: j\'ai le 36 dans le dos!',
          imageUrl:'http://files.newsnetz.ch/story/1/5/6/15633989/216/teaserbreitgross.jpg',
          shortDesc:'La période estivale des transferts bat son plein. Toutes les infos et les rumeurs dans notre live-ticker.'
       },
 
       {
          id:3,
+         articleNbr:5,
          theme:'PEOPLE',
          isLiked:0,
          likeNbr:12,
-         title:'Leonardo DiCaprio a une nouvelle amoureuse',
+         title:'L. DiCaprio a une nouvelle amoureuse',
          imageUrl:'http://files.newsnetz.ch/bildlegende/234061/2809685_pic_970x641.jpg',
          shortDesc:'L\'acteur a été surpris en train d\'embrasser passionnément la top Nina Agdal sur une plage de Malibu'
       },
 
       {
          id:4,
+         articleNbr:9,
          theme:'HIGH-TECH',
          isLiked:0,
          likeNbr:12,
-         title:'L\'UE accorde un délai à Google pour s\'expliquer',
+         title:'Un délai à Google pour s\'expliquer',
          imageUrl:'http://files.newsnetz.ch/story/2/2/1/22166690/2/topelement.jpg',
          shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
 
       {
          id:5,
+         articleNbr:8,
          theme:'ECONOMIE',
          isLiked:0,
          likeNbr:12,
-         title:"Goldman Sachs: Barroso n'a rien à voir avec le Brexit",
+         title:"G. Sachs: Barroso n'a rien à voir avec le Brexit",
          imageUrl:'http://files.newsnetz.ch/story/1/9/2/19272172/2/teasersmall16x9.jpg',
          shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
 
       {
          id:6,
+         articleNbr:11,
          theme:'HIGH-TECH',
          isLiked:0,
          likeNbr:12,
-         title:'L\'UE accorde un délai à Google pour s\'expliquer',
+         title:'Un délai à Google pour s\'expliquer',
          imageUrl:'http://files.newsnetz.ch/story/2/2/1/22166690/2/topelement.jpg',
          shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
       {
          id:7,
+         articleNbr:6,
          theme:'FAITS DIVERS',
          isLiked:0,
          likeNbr:12,
-         title:"Retrouvé vivant dans un ravin trois jours plus tard",
+         title:"Retrouvé vivant dans un ravin plus tard",
          imageUrl:'http://files.newsnetz.ch/story/2/9/2/29298672/1/topelement.jpg',
          shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
       {
          id:8,
+         articleNbr:16,
          theme:'BUZZ',
          isLiked:0,
          likeNbr:12,
@@ -95,6 +104,7 @@ module.exports = {
       },
       {
          id:9,
+         articleNbr:3,
          theme:'AUTO',
          isLiked:0,
          likeNbr:12,
@@ -104,6 +114,7 @@ module.exports = {
       },
       {
          id:10,
+         articleNbr:6,
          theme:'AUTO',
          isLiked:0,
          likeNbr:12,

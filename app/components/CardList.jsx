@@ -53,6 +53,8 @@ var CardList = React.createClass({
   },
   render:function(){
    var that = this;
+   var backgroundStyles ="swiper-container ";
+       backgroundStyles +=  (/Mobi/.test(navigator.userAgent)?' cards-background' :' cards-background-desktop')
    $(window).resize(function() {
      that.renderSwiper();
    });
@@ -66,7 +68,7 @@ var CardList = React.createClass({
     };
     return(
 
-  <div className="swiper-container cards-background" id="swiperId">
+  <div className={backgroundStyles} id="swiperId">
         <div className="swiper-wrapper ">
             {renderStartingCards()}
        </div>

@@ -1,6 +1,15 @@
 .full-width {} .footer {
-    background-color: $LMPWhite;
+    background-color: $LMPBlack;
     padding: 2rem 4rem;
     text-align: center;
-    color: $LMPOrnage;
+
+}
+
+.logo-bottom{
+  width: 30%;
+  margin-top: -20px;
+
+}
+.logo-bottom:hover{
+  cursor:pointer;
 }
