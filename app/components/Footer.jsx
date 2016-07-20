@@ -2,7 +2,7 @@ var React = require('react');
 var {Link, IndexLink} = require('react-router');
 
 var Footer = ()=>{
-  var styleLogo ="logo-bottom";
+  var styleLogo =" logo-bottom";
       styleLogo+=  (/Mobi/.test(navigator.userAgent)?'' :'-desktop');
   return (
         <footer className="footer">
