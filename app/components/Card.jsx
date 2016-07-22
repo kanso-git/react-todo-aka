@@ -6,9 +6,9 @@ var Card = React.createClass({
   },
   render:function(){
     var { theme,title,imageUrl,shortDesc,isLiked,likeNbr,articleNbr} = this.props;
-    var heartClass  = "like-transform fa fa-heart";
+    var heartClass  = "fa fa-heart";
         heartClass += (parseInt(isLiked) === 1 ?"":"-o");
-        heartClass +=" fa-lg LMPOrnage";
+        heartClass +="  LMPOrnage";
 
     return(
         <div className="wrapper swiper-slide">
@@ -16,7 +16,7 @@ var Card = React.createClass({
                 <i className="fa fa-history history-badge LMPOrnage " aria-hidden="true"></i>
                 <i className="fa fa-bookmark favorite-badge LMPOrnage" aria-hidden="true"></i>
                 <div className="card-meta-top">
-                    <div className="text-left"><i className="fa fa-circle LMPOrnage"></i>&nbsp;{theme}</div>
+                    <div className="text-left"><i className="fa fa-circle fa-lg LMPOrnage"></i>&nbsp;{theme}</div>
                 </div>
                 <div className="card-image">
                     <img src={imageUrl} alt="image" />
@@ -41,9 +41,7 @@ var Card = React.createClass({
                         </div>
                         <a id="share" className="share-toggle  share-icon-main" href="#"></a>
                     </div>
-                    <i className={heartClass} aria-hidden="false" onClick={this.toggleLike}>
-                        <span className="fa-xxs LMPOrnage">&nbsp;{likeNbr} j'aime</span>
-                    </i>
+
                     <hr>
                     </hr>
                     <article className="card-article">
@@ -51,6 +49,9 @@ var Card = React.createClass({
                             {shortDesc}
                         </p>
                     </article>
+                    <i className={heartClass} aria-hidden="false" onClick={this.toggleLike}>
+                        <span className="fa-xxs LMPOrnage">&nbsp;{likeNbr}</span>
+                    </i>
                     <i className="fa fa-files-o article-nbr LMPOrnage" aria-hidden="true">&nbsp;{articleNbr}</i>
                 </div>
             </div>
