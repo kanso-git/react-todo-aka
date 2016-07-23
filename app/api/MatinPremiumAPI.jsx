@@ -1,17 +1,19 @@
 var axios = require('axios');
-
+var API = require('Constants');
 //http://api.openweathermap.org/data/2.5/weather?q=Orbe&APPID=c7d4832a2c992b89247a8f5c678d5c68&units=metric
-const LMP_API_URL = '';
+const LMP_API_URL = API.GET_BASE_URL();
 
 module.exports = {
 
   getCards:function(){
+    console.log("BASE URL IS:"+LMP_API_URL);
     return [
 
       {
         id:0,
         articleNbr:6,
-        theme:'BIRTHDAY',
+        timestamp:1469268670,
+        category:'Publicite',
         isLiked:1,
         likeNbr:760,
         title:'Annik\'s Birthday',
@@ -21,7 +23,8 @@ module.exports = {
       {
         id:1,
         articleNbr:2,
-        theme:'RENCONTRE',
+        timestamp:1469268670,
+        category:'Economie',
         isLiked:1,
         likeNbr:76,
         title:'L\’amour avec un inconnu',
@@ -31,7 +34,8 @@ module.exports = {
       {
          id:2,
          articleNbr:1,
-         theme:'FOOTBALL',
+         timestamp:1469268670,
+         category:'Economie',
          isLiked:0,
          likeNbr:12,
          title:'Embolo: j\'ai le 36 dans le dos!',
@@ -42,85 +46,93 @@ module.exports = {
       {
          id:3,
          articleNbr:5,
-         theme:'PEOPLE',
+         timestamp:1469268670,
+         category:'People',
          isLiked:0,
          likeNbr:12,
          title:'L. DiCaprio a une nouvelle amoureuse',
          imageUrl:'http://files.newsnetz.ch/bildlegende/234061/2809685_pic_970x641.jpg',
-         shortDesc:'L\'acteur a été surpris en train d\'embrasser passionnément la top Nina Agdal sur une plage de Malibu'
+         shortDesc:'L\'acteur a été surpris en train d\'embrasser passionnément la top Nina Agdal '
       },
 
       {
          id:4,
          articleNbr:9,
-         theme:'HIGH-TECH',
+         timestamp:1469268670,
+         category:'Sport',
          isLiked:0,
          likeNbr:12,
          title:'Un délai à Google pour s\'expliquer',
          imageUrl:'http://files.newsnetz.ch/story/2/2/1/22166690/2/topelement.jpg',
-         shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
+         shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne'
       },
 
       {
          id:5,
          articleNbr:8,
-         theme:'ECONOMIE',
+         timestamp:1469268670,
+         category:'People',
          isLiked:0,
          likeNbr:12,
          title:"G. Sachs: Barroso n'a rien à voir avec le Brexit",
          imageUrl:'http://files.newsnetz.ch/story/1/9/2/19272172/2/teasersmall16x9.jpg',
-         shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
+         shortDesc:'Le système d\’exploitation Android est dans le viseur depuis avril dernier'
       },
 
       {
          id:6,
          articleNbr:11,
-         theme:'HIGH-TECH',
+         timestamp:1469268670,
+         category:'Sport',
          isLiked:0,
          likeNbr:12,
          title:'Un délai à Google pour s\'expliquer',
          imageUrl:'http://files.newsnetz.ch/story/2/2/1/22166690/2/topelement.jpg',
-         shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
+         shortDesc:'Le viseur de la Commission européenne depuis avril dernier'
       },
       {
          id:7,
          articleNbr:6,
-         theme:'FAITS DIVERS',
+         category:'People',
+         timestamp:1469268670,
          isLiked:0,
          likeNbr:12,
          title:"Retrouvé vivant dans un ravin plus tard",
          imageUrl:'http://files.newsnetz.ch/story/2/9/2/29298672/1/topelement.jpg',
-         shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
+         shortDesc:'Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
       {
          id:8,
          articleNbr:16,
-         theme:'BUZZ',
+         timestamp:1469268670,
+         category:'BUZZ',
          isLiked:0,
          likeNbr:12,
          title:"L'ab crack est la nouvelle tendance qui agite le Web",
          imageUrl:'http://files.newsnetz.ch/bildlegende/233829/2805615_pic_970x641.jpg',
-         shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
+         shortDesc:'Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
       {
          id:9,
          articleNbr:3,
-         theme:'AUTO',
+         timestamp:1469268670,
+         category:'AUTO',
          isLiked:0,
          likeNbr:12,
          title:"VW paiera 14,7 milliards de dollars",
          imageUrl:'http://files.newsnetz.ch/story/3/0/6/30628757/7/teasersmall16x9.jpg',
-         shortDesc:'Le système d\’exploitation Android est dans le viseur de la Commission européenne depuis avril dernier'
+         shortDesc:'Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
       {
          id:10,
          articleNbr:6,
-         theme:'AUTO',
+         timestamp:1469268670,
+         category:'AUTO',
          isLiked:0,
          likeNbr:12,
          title:"Le SUV Mercedes-Benz GLC devient à son tour un coupé",
          imageUrl:'http://files.newsnetz.ch/story/1/5/5/15535253/6/teasersmall16x9.jpg',
-         shortDesc:"Dans cette catégorie,  Le constructeur l’a bien compris en sortant ce nouveau modèle très tendance."
+         shortDesc:"Dans cette catégorie, ce nouveau modèle très tendance."
       }
 
     ];

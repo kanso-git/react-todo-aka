@@ -9,15 +9,31 @@ var Master = React.createClass({
       cards:MatinPremiumAPI.getCards()
     }
   },
+
+  handleToggle:function(flag){
+      switch (flag) {
+       case 'like':
+        //Toggle like logic
+        console.log('Case Toggle like logic');
+        break;
+       case 'history':
+        //Toggle history logic
+        console.log('Case Toggle history logic');
+       break;
+       case 'favorite':
+        //Toggle like favorite
+        console.log('Case Toggle favorite logic');
+       break;
+    }
+  },
   componentDidMount: function(){
    // load the cards when component
-   //http://files.newsnetz.ch/bildlegende/234061/2809685_pic_970x641.jpg
   },
   render:function(){
     var {cards} = this.state;
     return(
       <div>
-        <CardList cards={cards} />
+        <CardList onToggle={this.handleToggle} cards={cards} />
       </div>
     )
   }

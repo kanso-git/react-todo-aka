@@ -33,6 +33,9 @@
 .shadowDepth1 {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+
+
+
 /**
  * Card Styles
  */
@@ -307,4 +310,13 @@
 .cards-background-desktop {
     background:$LMPBlack;
     background: url(http://www.walldevil.com/wallpapers/a31/nespresso-commercial-city-silhouette.jpg) repeat-y 50%;
+}
+
+.card-timestamp{
+  margin-top: 3rem;
+  padding-left: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+
 }

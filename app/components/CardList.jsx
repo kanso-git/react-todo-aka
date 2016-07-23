@@ -19,6 +19,10 @@ var CardList = React.createClass({
 
      this.renderSwiper();
   },
+
+  onToggle:function(flag){
+    this.props.onToggle(flag);
+  },
   renderSwiper:function(){
     var swiperWidth= $("#swiperId").width();
     var slidesPerView = Math.floor(swiperWidth/320);
@@ -62,7 +66,7 @@ var CardList = React.createClass({
     var renderStartingCards = () =>{
       return cards.map((card) =>{
         return (
-          <Card key={card.id} {...card}/>   /* Using ES6 Object Spread Operator */
+          <Card key={card.id}  onToggle={this.onToggle} {...card}/>   /* Using ES6 Object Spread Operator */
         )
       });
     };
