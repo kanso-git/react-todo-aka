@@ -22,9 +22,9 @@ var Card = React.createClass({
   },
   renderContentCards:function(){
     var { theme,title,timestamp,imageUrl,shortDesc,isLiked,likeNbr,articleNbr,category} = this.props;
-    var heartClass  = "fa ";
+    var heartClass  = "fa fa-heart";
         heartClass += (parseInt(isLiked) === 1 ?"":"-o");
-        heartClass +="  LMPOrnage fa-heart";
+        heartClass +="  LMPOrnage heart-icon";
         return(
             <div className="wrapper swiper-slide">
                 <div className="card cadre shadowDepth1">
