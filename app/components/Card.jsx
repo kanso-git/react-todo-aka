@@ -22,9 +22,9 @@ var Card = React.createClass({
   },
   renderContentCards:function(){
     var { theme,title,timestamp,imageUrl,shortDesc,isLiked,likeNbr,articleNbr,category} = this.props;
-    var heartClass  = "fa fa-heart";
+    var heartClass  = "fa ";
         heartClass += (parseInt(isLiked) === 1 ?"":"-o");
-        heartClass +="  LMPOrnage";
+        heartClass +="  LMPOrnage fa-heart";
         return(
             <div className="wrapper swiper-slide">
                 <div className="card cadre shadowDepth1">
@@ -64,10 +64,11 @@ var Card = React.createClass({
                                 {shortDesc}
                             </p>
                         </article>
-                        <i className={heartClass} aria-hidden="false" onClick={this.onToggle('like')}>
-                            <span className="fa-xxs LMPOrnage">&nbsp;{likeNbr}</span>
-                        </i>
+
                         <i className="fa fa-files-o article-nbr LMPOrnage" aria-hidden="true">&nbsp;{articleNbr}</i>
+                        <i className={heartClass} aria-hidden="false" onClick={this.onToggle('like')}>
+                              <span className="fa-xxs LMPOrnage">&nbsp;{likeNbr}</span>
+                        </i>
                     </div>
                 </div>
             </div>
