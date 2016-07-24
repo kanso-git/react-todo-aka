@@ -8,22 +8,10 @@ module.exports = {
   getCards:function(){
     console.log("BASE URL IS:"+LMP_API_URL);
     return [
-
-      {
-        id:0,
-        articleNbr:6,
-        timestamp:1469268670,
-        category:'Publicite',
-        isLiked:1,
-        likeNbr:760,
-        title:'Annik\'s Birthday',
-        imageUrl:'https://image.freepik.com/free-vector/colorful-happy-birthday-card_23-2147511988.jpg',
-        shortDesc:'Happy Birthday Annik from Le Matin du Soir TEAM'
-      },
       {
         id:1,
         articleNbr:2,
-        timestamp:1469268670,
+        timestamp:1469095156,
         category:'Economie',
         isLiked:1,
         likeNbr:76,
@@ -34,7 +22,7 @@ module.exports = {
       {
          id:2,
          articleNbr:1,
-         timestamp:1469268670,
+         timestamp:1469095156,
          category:'Economie',
          isLiked:0,
          likeNbr:12,
@@ -70,11 +58,11 @@ module.exports = {
       {
          id:5,
          articleNbr:8,
-         timestamp:1469268670,
+         timestamp:1369268670,
          category:'People',
          isLiked:0,
          likeNbr:12,
-         title:"G. Sachs: Barroso n'a rien à voir avec le Brexit",
+         title:"Barroso n'a rien à voir avec le Brexit",
          imageUrl:'http://files.newsnetz.ch/story/1/9/2/19272172/2/teasersmall16x9.jpg',
          shortDesc:'Le système d\’exploitation Android est dans le viseur depuis avril dernier'
       },
@@ -94,7 +82,7 @@ module.exports = {
          id:7,
          articleNbr:6,
          category:'People',
-         timestamp:1469268670,
+         timestamp:1469095156,
          isLiked:0,
          likeNbr:12,
          title:"Retrouvé vivant dans un ravin plus tard",
@@ -104,18 +92,18 @@ module.exports = {
       {
          id:8,
          articleNbr:16,
-         timestamp:1469268670,
+         timestamp:1469095156,
          category:'BUZZ',
          isLiked:0,
          likeNbr:12,
-         title:"L'ab crack est la nouvelle tendance qui agite le Web",
+         title:"La nouvelle tendance qui agite le Web",
          imageUrl:'http://files.newsnetz.ch/bildlegende/233829/2805615_pic_970x641.jpg',
          shortDesc:'Android est dans le viseur de la Commission européenne depuis avril dernier'
       },
       {
          id:9,
          articleNbr:3,
-         timestamp:1469268670,
+         timestamp:1469095156,
          category:'AUTO',
          isLiked:0,
          likeNbr:12,
@@ -130,7 +118,7 @@ module.exports = {
          category:'AUTO',
          isLiked:0,
          likeNbr:12,
-         title:"Le SUV Mercedes-Benz GLC devient à son tour un coupé",
+         title:"Le SUV Mercedes-Benz GLC devient",
          imageUrl:'http://files.newsnetz.ch/story/1/5/5/15535253/6/teasersmall16x9.jpg',
          shortDesc:"Dans cette catégorie, ce nouveau modèle très tendance."
       }
@@ -153,5 +141,33 @@ module.exports = {
   //   }, function(res){
   //    throw new Error(res.data.message);
   //   })
+  // }
+
+  // {
+  //    "id": 657,
+  //    "title": "Post avec tous les modules - non publique",
+  //    "subtitle": null,
+  //    "isLocked": false,
+  //    "isDiscovery": true,
+  //    "category": "economie",
+  //    "published_date": "2016-06-30 09:08:44",
+  //    "tag": "didier drogba",
+  //    "withSameTag": 1,
+  //    "numberOfLike": "2",
+  //    "permalink": "http://premium-lematin.xyz/post-de-sport/",
+  //    "card": {
+  //       "image": "http://premium-lematin.xyz/wp-content/uploads/2016/06/2016-04-17.jpg",
+  //       "text": "<p>dasdasdasdasd</p>\n",
+  //       "buttonUrl": "",
+  //       "buttonText": "",
+  //       "options": {
+  //          "shareOptions": 1,
+  //          "swipeUp": 1,
+  //          "swipeDown": 1,
+  //          "navigation": 1,
+  //          "doubleClick": 1,
+  //          "history": 1
+  //       }
+  //    }
   // }
 }

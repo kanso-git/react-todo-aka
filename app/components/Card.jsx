@@ -22,11 +22,13 @@ var Card = React.createClass({
   },
   renderContentCards:function(){
     var { theme,title,timestamp,imageUrl,shortDesc,isLiked,likeNbr,articleNbr,category} = this.props;
+    var currentElapsedTime = moment( moment.unix(timestamp)).from();
     var heartClass  = "fa fa-heart";
         heartClass += (parseInt(isLiked) === 1 ?"":"-o");
         heartClass +="  LMPOrnage heart-icon";
         return(
             <div className="wrapper swiper-slide">
+                <span className="card-ribbon"> Sujet Actuel <span className="arrow"></span> </span>
                 <div className="card cadre shadowDepth1">
                     <i className="fa fa-history history-badge LMPOrnage " aria-hidden="true"  onClick={this.onToggle('history')}></i>
                     <i className="fa fa-bookmark favorite-badge LMPOrnage" aria-hidden="true" onClick={this.onToggle('favorite')}></i>
@@ -34,7 +36,7 @@ var Card = React.createClass({
                         <div className="text-left"><i className="fa fa-circle fa-lg LMPOrnage"></i>&nbsp;{category}</div>
                     </div>
                     <div className="card-image">
-                        <i className="card-timestamp"> {moment({timestamp}).from()}</i>
+                        <i className="card-timestamp"> {currentElapsedTime}</i>
                         <img src={imageUrl} alt="image" />
                         <div className="caption-container">
                           <p className="caption-content">
