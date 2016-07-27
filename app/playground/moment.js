@@ -16,5 +16,7 @@ var timestamp = 1469095156;
 // console.log('Current moment MMM D, YY @ h:mm a =', currentMoment.format('MMM D, YY @ h:mm a'));
 // console.log('Current moment MMMM Do, YYYY @ h:mm A=', currentMoment.format('MMMM Do, YYYY @ h:mm A'));
 
+var duration = moment.duration(2, 'minutes');
+console.log("duration in minutes:",duration);
 var currentElapsedTime = moment( moment.unix(timestamp)).from();
 console.log('Elapsed time',  currentElapsedTime);

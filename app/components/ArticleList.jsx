@@ -1,5 +1,5 @@
 var React = require('react');
-var Card = require('Card');
+var Article = require('Article');
 
 var ArticleList = React.createClass({
   componentDidMount:function(){

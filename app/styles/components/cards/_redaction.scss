@@ -1,0 +1,357 @@
+
+.wrapper {
+    max-width: $LMPCardWidth;
+    margin: 0px 0px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+/**
+ * Helpers
+ */
+
+.cadre {
+   border-radius: 10px;
+ }
+
+.border-tlr-radius {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.text-center {
+    text-align: center;
+}
+.radius {
+    border-radius: 2px;
+}
+.padding-tb {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+}
+.shadowDepth0 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.shadowDepth1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+
+
+/**
+ * Card Styles
+ */
+
+.card {
+    background-color:$LMPWhite;
+    margin-bottom: 1.6rem;
+}
+.card-padding {
+    padding: 1.6rem;
+}
+.card-image {
+    background-color: #eee;
+    position: relative;
+    .caption-container {
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        min-height: 60px;
+        width: 100%;
+        opacity: 0.97;
+        background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8cmFkaWFsR3JhZGllbnQgaWQ9ImczNjQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjeD0iNTAlIiBjeT0iMTAwJSIgcj0iNzUlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGRkZGRiIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzQxNjlFMSIgb2Zmc2V0PSIxIi8+CjwvcmFkaWFsR3JhZGllbnQ+CjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNnMzY0KSIgLz4KPC9zdmc+);
+          .caption-content {
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+            color:#fff;
+            font-size: 1rem;
+            text-transform: uppercase;
+              margin-top: .8rem;
+            margin-bottom: .8rem;
+            font-weight: bold;
+        }
+    }
+        overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background:black;
+        background:rgba(0,0,0,0.8);
+        filter:blur(4px);
+        -o-filter:blur(4px);
+        -ms-filter:blur(4px);
+        -moz-filter:blur(4px);
+        -webkit-filter:blur(4px);
+    }
+
+
+}
+
+
+.card-image img {
+    width: $LMPCardWidth;
+    max-width: 100%;
+    height: $LMPCardImgHeight;
+    display: block;
+}
+.card-content {
+    position: relative;
+    height: $LMPCardLowerContentHeight;
+    font-size: 0.85rem;
+    hr {
+        margin-top: -8px;
+    }
+}
+/* card meta */
+
+.LMPOrnage {
+    color: $LMPOrnage;
+}
+.card-meta-top {
+    height: $LMPCardTitleHeight;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 0.8rem;
+}
+.card-meta time {
+    font-size: 1rem;
+    color: #bbb;
+    margin-left: 0.8rem;
+}
+.fa-xxs {
+    font-size: 12px;
+}
+
+.like-transform{
+  transform: translate(-7px,-23px);
+}
+/* card action */
+
+.card-action {
+    overflow: hidden;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+    padding-bottom: 1.6rem;
+}
+.card-author {} .card-author img,
+.card-author-content {
+    display: inline-block;
+    vertical-align: middle;
+}
+.card-author img {
+    border-radius: 50%;
+    margin-right: 0.6em;
+}
+.card-share {
+    margin-right: -15px;
+    float: right;
+    position: relative;
+    margin-top: -42px;
+}
+.card-social {
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    width: 160px;
+    transform: translateZ(0);
+    transform: translateX(0px);
+    transition: transform 0.35s ease;
+}
+.card-social-active {
+    visibility: visible;
+    /*z-index: 3;*/
+
+    transform: translateZ(0);
+    transform: translateX(-18px);
+    transition: transform 0.35s ease;
+}
+.share-toggle {
+    z-index: 2;
+}
+.share-toggle:before {
+    content: "\f1e0";
+    font-family: 'FontAwesome';
+    color: $LMPOrnage;
+}
+.share-toggle.share-expanded:before {
+    content: "\f00d";
+}
+.share-icon-main {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: $LMPWhite;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    outline: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.share-icon-main:hover,
+.share-icon-main:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.like-icon {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    outline: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+.share-icon {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: $LMPWhite;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    outline: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+.share-icon:hover,
+.share-icon:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.facebook {
+  //background-color: #3b5998;
+  background-color:$LMPWhite;
+}
+.twitter {
+  //background-color: #00abe3;
+    background-color:$LMPWhite;
+}
+.googleplus {
+  //background-color: #d3492c;
+      background-color:$LMPWhite;
+}
+.facebook,
+.twitter,
+.googleplus {
+    color: $LMPOrnage;
+    //border:2px solid white;
+}
+.facebook:hover,
+.twitter:hover,
+.googleplus:hover {
+    color: $LMPOrnage;
+}
+
+/* card article */
+.card-article{
+  margin-top: -1rem;
+}
+.card-article a {
+
+}
+.card-article a:hover {
+
+}
+
+.article-nbr{
+   position: absolute;
+   bottom: 0px;
+   right: 0px;
+   margin:5px;
+}
+
+.heart-icon{
+  position: absolute;
+  size:16px;
+  bottom: 0px;
+  left: 0px;
+  margin:5px;
+}
+.favorite-badge{
+  font-size: 2rem;
+  font-weight: normal;
+  position: absolute;
+  top: -2px;
+  right: 0px;
+  margin-right:15px;
+}
+.history-badge{
+  z-index: 1;
+  font-size: 1.8rem;
+  font-weight: normal;
+  position: absolute;
+  top: 3rem;
+  left: 0px;
+  margin-left:12px;
+
+}
+.cards-background {
+    background:$LMPBlack;
+}
+
+.cards-background-desktop {
+    background:$LMPBlack;
+    background: url(http://www.walldevil.com/wallpapers/a31/nespresso-commercial-city-silhouette.jpg) repeat-y 50%;
+}
+
+.card-timestamp{
+  margin-top: 3rem;
+  padding-left: 0.5rem;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+
+}
+
+
+.card-ribbon {
+    z-index: 10;
+     background: $LMPOrnage;
+     //background: -moz-linear-gradient(top, $LMPOrnage, #c8c8c8);
+     //background: -webkit-gradient(linear, left top, left bottom, from($LMPOrnage), to(#c8c8c8));
+     padding-top: 5px ;
+     padding-bottom: 5px;
+     padding-left: 30px;
+     padding-right: 0px;
+     margin-left: -6px;
+     margin-top: 0;
+     position: absolute;
+     top:40%;
+     width: 40%;
+    -moz-box-shadow: 1px 1px 3px #292929;
+    -webkit-box-shadow: 1px 1px 3px #292929;
+    box-shadow: 1px 1px 3px #292929;
+    color: #fff;
+    text-shadow: 0 1px 0 white;
+}
+
+.arrow {
+     width: 0; height: 0;
+     line-height: 0;
+     border-left: 6px solid transparent;
+     border-top: 2px solid $LMPOrnage;
+     top: 104%;
+     left: 0;
+     position: absolute;
+}
+.hide{
+  display: none !important;
+}

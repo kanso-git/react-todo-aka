@@ -7,7 +7,9 @@
 
 // Components
 @import "components/nav";
-@import "components/card";
+@import "components/cards/redaction";
+@import "components/cards/publicite";
+@import "components/cards/divertissement";
 @import "swiper/swiper";
 @import "swiper/card-swiper";
 @import "components/footer"

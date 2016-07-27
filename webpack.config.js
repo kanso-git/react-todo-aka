@@ -26,6 +26,8 @@ module.exports = {
     modulesDirectories:[
       'node_modules',
       './app/components',
+      './app/components/cards',
+      './app/components/articles',
       './app/api',
       './app/scripts'
     ],
