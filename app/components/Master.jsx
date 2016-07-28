@@ -4,7 +4,8 @@ var Constants = require('Constants');
 var MatinPremiumAPI= require('MatinPremiumAPI');
 var UserInfoLocalStorge= require('UserInfoLocalStorge');
 var CardList = require('CardList');
-var Uitils = require('Uitils');
+var Utility = require('Utility');
+var ErrorModal = require('ErrorModal');
 
 
 var startingCards = [];
@@ -22,43 +23,40 @@ var Master = React.createClass({
       selectedMenuItem:'NA'
     }
   },
-
-  handleToggle:function(flag,cardId){
-      var {cards} = this.state;
-      switch (flag) {
-         case Constants.TOGGLE_LIKE:
-            var newCards = Uitils.handleCardLike(cards,cardId);
-            this.setState({cards :newCards});
-            break;
-         case Constants.TOGGLE_HISTORY:
-            var newCards = Uitils.handleCardHistory(cards,cardId);
-            this.setState({cards :newCards});
-            break;
-         case Constants.TOGGLE_FAVORITE:
-            var newCards = Uitils.handleCardHFavorite(cards,cardId);
-            this.setState({cards :newCards});
-            break;
-    }
-
-  },
   getCardsPromise:function(){
         var promiseUserInfo =MatinPremiumAPI.getUserInfo();
         var that = this;
 
         this.setState({
+          cards:[],
           isLoading :true,
           errorMessage: undefined
+
          });
 
-         promiseUserInfo.then(
-           rUserInfo =>{
-                return Uitils.handlePromiseUserInfo(rUserInfo);
-            }).then( rStartingCards =>{
-                that.setState({
-                  cards:Uitils.handlePromiseStartingCards(rStartingCards)
-                })
-         }
-    )
+          var promiseStartingCards =  promiseUserInfo.then(rUserInfo =>{
+                console.log("Master promiseUserInfo then",rUserInfo);
+                return Utility.handlePromiseUserInfo(rUserInfo).
+                then(function(_cards){
+                 console.log("my _cards ",_cards);
+                 var startingCards= Utility.handlePromiseStartingCards(_cards);
+                 console.log("my startingCards ",startingCards);
+                 that.setState({
+                   cards:startingCards,
+                   errorMessage:undefined,
+                   isLoading:false
+                 })
+                });
+            }).catch(function(error){
+                    console.log("Master promiseUserInfo error",error);
+                    that.setState({
+                      cards:[],
+                      errorMessage: error.message,
+                      isLoading:false
+                    })
+            });
+
+    console.log("Master promiseStartingCards the return Object ",promiseStartingCards);
   },
   componentDidMount: function(){
    // load the cards when component
@@ -88,12 +86,51 @@ var Master = React.createClass({
         window.location.hash ='#/';
       }
     },
+
+    handleToggle: function(flag,cardId){
+
+        var {cards} = this.state;
+        switch (flag) {
+          case Constants.TOGGLE_LIKE:
+             var newCards = Utility.handleCardLike(cards,cardId);
+             this.setState({cards :newCards});
+          break;
+         case Constants.TOGGLE_HISTORY:
+            var newCards = Utility.handleCardHistory(cards,cardId);
+            this.setState({cards :newCards});
+          break;
+         case Constants.TOGGLE_FAVORITE:
+            var newCards = Utility.handleCardHFavorite(cards,cardId);
+            this.setState({cards :newCards});
+         break;
+      }
+
+    },
   render:function(){
-    var {cards} = this.state;
-    console.log("cards in Master ",cards)
+        var {cards,isLoading,errorMessage} = this.state;
+        var that = this;
+        function renderMessage(){
+            //debugger;
+            if(isLoading){
+              return <progress className="success text-center" max="100" value="75">Fecthing the Cards ...</progress>
+            }else if(cards && cards.length>0){
+              return  <CardList onToggle={that.handleToggle} cards={cards} />;
+            }
+          }
+          function renderError(){
+           //debugger;
+           if(typeof errorMessage === 'string'){
+             return (
+               <ErrorModal message={errorMessage}/>
+             )
+           }
+          }
+
+
     return(
       <div>
-        <CardList onToggle={this.handleToggle} cards={cards} />
+        {renderMessage()}
+        {renderError()}
       </div>
     )
   }

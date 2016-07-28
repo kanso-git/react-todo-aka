@@ -9,9 +9,7 @@ var Redaction = React.createClass({
      var {id} = this.props;
      return ()=> this.props.onToggle(flag,id);
   },
-  onToggleShare:function(e){
-
-  },
+  
   render:function(){
     moment.locale('fr');
     var { title,isLocked,isDiscovery,published_date,tag,card,withSameTag,numberOfLike,card,transient} = this.props;
@@ -66,7 +64,7 @@ var Redaction = React.createClass({
                                 <span className="fa fa-google-plus"></span>
                                 </a>
                             </div>
-                          <a id="share" className="share-toggle  share-icon-main" onClick={this.onToggleShare} href="#"></a>
+                          <a id="share" className="share-toggle  share-icon-main" href="#"></a>
                         </div>
                         <hr>
                         </hr>
