@@ -47,7 +47,7 @@ var CardList = React.createClass({
   renderSwiper:function(){
     console.log(" Entring render Swiper renderSwiper ");
     console.log('>>>>>>>>>>>>> Resized finished. width['+$( window ).width()+'] height['+$( window ).height()+']');
-
+    $('.swiper-container').height( $('footer.footer').offset().top -44);
     var swiperContainerWidth = $('.swiper-container').width();
     console.log("swiper-container [width :"+swiperContainerWidth+", heigh:"+$('.swiper-container').height());
     var translateValue= ($('.swiper-container').height()-Constants.CARD_HEIGHT)/2;
