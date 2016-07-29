@@ -9,7 +9,7 @@ var Redaction = React.createClass({
      var {id} = this.props;
      return ()=> this.props.onToggle(flag,id);
   },
-  
+
   render:function(){
     moment.locale('fr');
     var { title,isLocked,isDiscovery,published_date,tag,card,withSameTag,numberOfLike,card,transient} = this.props;
@@ -17,7 +17,7 @@ var Redaction = React.createClass({
     var currentElapsedTime = moment( moment(published_date)).from();
 
     var heartClass  = "fa fa-heart";
-        heartClass += (transient.liked ? "":"-o");
+        heartClass += (transient.liked === true ? "":"-o");
         heartClass +="  LMPOrnage heart-icon";
 
     var cardRibbon  = "card-ribbon"
@@ -25,20 +25,19 @@ var Redaction = React.createClass({
 
 
     var viewedClass  = "fa fa-history history-badge LMPOrnage "
-        viewedClass  += (transient.favorited == true ? " " : " hide");
+        viewedClass  += (transient.viewed === true ? " " : " hide");
 
     var favoritedClass  = "fa favorite-badge fa-bookmark "
         favoritedClass += "  LMPOrnage"
-        favoritedClass += (transient.favorited == true ?" ":" hide");
-
+        favoritedClass += (transient.favorited === true  ? " ":" hide");
 
 
         return(
-            <div className="wrapper swiper-slide">
+            <div className="card-wrapper swiper-slide "   >
                 <span className={cardRibbon} > {Constants.SUJET_ACTUEL} <span className="arrow"></span> </span>
+                  <i className={viewedClass} aria-hidden="true"  onClick={this.onToggle(Constants.TOGGLE_HISTORY)}></i>
+                  <i className={favoritedClass} aria-hidden="true" onClick={this.onToggle(Constants.TOGGLE_FAVORITE)}></i>
                 <div className="card cadre shadowDepth1">
-                    <i className={viewedClass} aria-hidden="true"  onClick={this.onToggle(Constants.TOGGLE_HISTORY)}></i>
-                    <i className={favoritedClass} aria-hidden="true" onClick={this.onToggle(Constants.TOGGLE_FAVORITE)}></i>
                     <div className="card-meta-top">
                         <div className="text-left"><i className="fa fa-circle fa-lg LMPOrnage"></i>&nbsp;{title}</div>
                     </div>
@@ -73,7 +72,6 @@ var Redaction = React.createClass({
                                 {card.text}
                             </p>
                         </article>
-
                         <i className="fa fa-files-o article-nbr LMPOrnage" aria-hidden="true">&nbsp;{withSameTag}</i>
                         <i className={heartClass} aria-hidden="false" onClick={this.onToggle(Constants.TOGGLE_LIKE)}>
                               <span className="fa-xxs LMPOrnage">&nbsp;{numberOfLike}</span>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    html, .bar:before {
+background: black url(http://cdn.css-tricks.com/images/forums-bg.png) repeat 50% 100% fixed;
+}
+
+.bar {
+float: left;
+margin: 5px;
+text-align: center;
+color: #FFF;
+font-weight: bold;
+text-shadow: 0px 1px 2px rgba(0,0,0,0.25);
+line-height: 5em;
+position: relative;
+height: 5em;
+width: 200px;
+background: rgba(230,240,255,0.4);
+border: 2px dashed transparent;
+box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.15);
+border-radius: 4px;
+-webkit-border-radius: 4px;
+transition: all .3s ease-in-out;
+-webkit-transition: all .3s ease-in-out;
+-moz-transition: all .3s ease-in-out;
+-o-transition: all .3s ease-in-out;
+}
+
+.bar:before {
+content: '';
+position: absolute;
+z-index: -1;
+height: 100%;
+top: 0; right: 0; left: 0;
+filter: blur(5px);
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+}
+
+.bar:hover { box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.25); }
+
+.bar.over {
+border: 2px dashed rgba(0,0,0,0.2);
+background-color: rgba(0,0,0,0.05);
+box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.15);
+}
+
+.bar:active {
+-webkit-transform: scale(0.9);
+-moz-transform: scale(0.9);
+-ms-transform: scale(0.9);
+-o-transform: scale(0.9);
+}
+
+/* Prevent the text contents of draggable elements from being selectable. */
+[draggable] {
+-moz-user-select: none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none;
+/* Required to make elements draggable in old WebKit */
+-khtml-user-drag: element;
+-webkit-user-drag: element;
+cursor: move;
+}
+    </style>
+  </head>
+  <body>
+
+    <div class="bar" draggable="true">DRAG ME #1</div>
+
+    <div class='bar' draggable="true">DRAG ME #2</div>
+
+    <div class='bar' draggable="true">DRAG ME #3</div>
+
+    <div class='bar' draggable="true">DRAG ME #4</div>
+
+    <div class='bar' draggable="true">DRAG ME #5</div>
+
+    <div class='bar' draggable="true">DRAG ME #6</div>
+
+    <div class='bar' draggable="true">DRAG ME #7</div>
+
+    <div class='bar' draggable="true">DRAG ME #8</div>
+
+    <div class='bar' draggable="true">DRAG ME #9</div>
+ <script type="text/javascript">
+ function handleDragStart(e) {
+  //this.style.opacity = '0.6';  // this / e.target is the source node.
+}
+
+function handleDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault(); // Necessary. Allows us to drop.
+  }
+
+  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+  return false;
+}
+
+function handleDragEnter(e) {
+  // this / e.target is the current hover target.
+  this.classList.add('over');
+}
+
+function handleDragLeave(e) {
+  this.classList.remove('over');  // this / e.target is previous target element.
+}
+
+var cols = document.querySelectorAll('.bar');
+[].forEach.call(cols, function(col) {
+  col.addEventListener('dragstart', handleDragStart, false);
+  col.addEventListener('dragenter', handleDragEnter, false);
+  col.addEventListener('dragover', handleDragOver, false);
+  col.addEventListener('dragleave', handleDragLeave, false);
+});
+
+function handleDrop(e) {
+  // this / e.target is current target element.
+
+  if (e.stopPropagation) {
+    e.stopPropagation(); // stops the browser from redirecting.
+  }
+
+  // See the section on the DataTransfer object.
+
+  return false;
+}
+
+function handleDragEnd(e) {
+  // this/e.target is the source node.
+
+  [].forEach.call(cols, function (col) {
+    col.classList.remove('over');
+  });
+}
+
+var cols = document.querySelectorAll('.bar');
+[].forEach.call(cols, function(col) {
+  col.addEventListener('dragstart', handleDragStart, false);
+  col.addEventListener('dragenter', handleDragEnter, false)
+  col.addEventListener('dragover', handleDragOver, false);
+  col.addEventListener('dragleave', handleDragLeave, false);
+  col.addEventListener('drop', handleDrop, false);
+  col.addEventListener('dragend', handleDragEnd, false);
+});
+
+var dragSrcEl = null;
+
+function handleDragStart(e) {
+  // Target (this) element is the source node.
+  //this.style.opacity = '0.4';
+
+  dragSrcEl = this;
+
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.innerHTML);
+}
+
+function handleDrop(e) {
+  // this/e.target is current target element.
+
+  if (e.stopPropagation) {
+    e.stopPropagation(); // Stops some browsers from redirecting.
+  }
+
+  // Don't do anything if dropping the same bar we're dragging.
+  if (dragSrcEl != this) {
+    // Set the source bar's HTML to the HTML of the bar we dropped on.
+    dragSrcEl.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text/html');
+  }
+
+  return false;
+}
+ </script>
+  </body>
+</html>

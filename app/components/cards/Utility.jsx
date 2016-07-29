@@ -17,58 +17,36 @@ var userUncheckedCategories=[];
 var userServices = [];
 var userCheckedServices = [];
 var userUncheckedServices = [];
-var startingCards = [];
+
 
 
 module.exports = {
   handlePromiseUserInfo :function(rUserInfo){
-    console.log("Master - promiseUserInfo: then case userInfo before",rUserInfo);
     if(rUserInfo.data ){
        userInfo = rUserInfo.data ;
-       // add a fresh copy
-       console.log("Master - Save a fresh copy of the userInfo Object ");
+       //add this fresh copy to localStorage
        UserInfoLocalStorge.setUserInfo(JSON.parse(JSON.stringify(userInfo)));
-    }else{
-       console.log("Master - get the userInfo Object from the localStorage ");
+     }else{
+       // just re-user existing copy
        userInfo =rUserInfo;
-    }
-    console.log("Master - promiseUserInfo: then case userInfo after",userInfo);
+     }
 
      userCategories = userInfo.categories;
-     console.log("userCategories", userCategories);
-
-     userCheckedCategories = userInfo.categories
-         .filter(filter1Fn)
-         .map(mapKeyFn);
-
-     console.log("userCheckedCategories", userCheckedCategories);
-     userUncheckedCategories = userInfo.categories
-         .filter(filter0Fn)
-         .map(mapKeyFn);
-     console.log("userUncheckedCategories", userUncheckedCategories);
+     userCheckedCategories = userInfo.categories.filter(filter1Fn).map(mapKeyFn);
+     userUncheckedCategories = userInfo.categories.filter(filter0Fn).map(mapKeyFn);
 
      userServices = userInfo.Services;
-     console.log("userServices", userServices);
+     userCheckedServices = userInfo.Services.filter(filter1Fn).map(mapKeyFn);
+     userUncheckedServices = userInfo.Services.filter(filter0Fn).map(mapKeyFn);
 
-     userCheckedServices = userInfo.Services
-         .filter(filter1Fn)
-         .map(mapKeyFn);
-
-     console.log("userCheckedServices", userCheckedServices);
-
-     userUncheckedServices = userInfo.Services
-         .filter(filter0Fn)
-         .map(mapKeyFn);
-     console.log("userUncheckedServices", userUncheckedServices);
-     console.log("promiseUserInfo  ", userInfo)
      return MatinPremiumAPI.getStartingCards();
   },
   handlePromiseStartingCards:function(rStartingCards){
-    console.log("rStartingCards", rStartingCards);
+
     var cards =JSON.parse(JSON.stringify(rStartingCards))
-    return  startingCards=cards.map(card => {
+    return  cards.map(card => {
            var transient =[];
-           if ((card.category).toLocaleLowerCase() == "Publicite".toLocaleLowerCase()) {
+           if ((card.category).toLocaleLowerCase() == Constants.PUBLICITE_STR.toLocaleLowerCase()) {
                transient["type"] = Constants.PUBLICITE;
            } else {
                var cardCategory = userCheckedCategories
@@ -89,13 +67,11 @@ module.exports = {
                        })|| [];
 
                       cardService.length > 0 ? transient["type"] = Constants.DIVERTISSEMENT : transient["type"] = Constants.UNKNOWN
-
                }
-
            }
 
            var cardDeleted = userInfo.deleteCards.find(id => {if (parseInt(id) == card.id) {return id;}}) || [];
-               cardDeleted.length >0 ? transient["deleted"] = "true":transient["deleted"] = "false";
+               cardDeleted.length >0 ? transient["deleted"] = true :transient["deleted"] = false;
 
            var cardLiked = userInfo.likeCards.find(id => {if (parseInt(id) == card.id) {return id;}}) || [];
                cardLiked.length >0 ? transient["liked"] = true:transient["liked"] = false;
@@ -135,6 +111,7 @@ module.exports = {
     UserInfoLocalStorge.setUserInfo(userInfo);
     console.log("newLikeCards ",newLikeCards);
     //service part
+
     var newCards = cards.map(_card => {
        if(_card.id == cardId){
          _card.transient.liked = ! _card.transient.liked;
@@ -151,7 +128,7 @@ module.exports = {
   },
   handleCardHistory : function(cards,cardId){
     //Toggle like logic
-    console.log('Case Toggle like logic');
+    console.log('Case Toggle History logic');
     var userInfo  = UserInfoLocalStorge.getUserInfo();
     var historyCards = userInfo.historyCards;
     var searchCard = historyCards.find(id => id == cardId)
@@ -182,9 +159,9 @@ module.exports = {
     });
     return newCards;
   },
-  handleCardHFavorite : function(cards,cardId){
+  handleCardFavorite : function(cards,cardId){
     //Toggle like logic
-    console.log('Case Toggle like logic');
+    console.log('Case Toggle Favorite logic');
     var userInfo  = UserInfoLocalStorge.getUserInfo();
     var favoriteCards = userInfo.favoriteCards;
     var searchCard = favoriteCards.find(id => id == cardId)

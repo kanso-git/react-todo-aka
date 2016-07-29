@@ -15,7 +15,7 @@ var CardList = React.createClass({
     };
   },
   componentDidMount:function(){
-    console.log(" componentDidMount has been mounted");
+    console.log("componentDidMount has been mounted -> renderSwiper");
     this.renderSwiper();
   },
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -30,7 +30,7 @@ var CardList = React.createClass({
     // return false ;
 
      if(nextState.resizeTimer !== this.state.resizeTimer){
-         console.log(" shouldComponentUpdate reload me ");
+         console.log("shouldComponentUpdate reload me ");
          location.reload();
      }
     return true;
@@ -38,12 +38,6 @@ var CardList = React.createClass({
   },
   componentWillReceiveProps: function(newProps){
     console.log(" componentWillReceiveProps new props have been received ");
-    $('.card-share > a').unbind( "click" );
-    $('.card-share > a').on('click', function(e){
-      e.preventDefault() // prevent default action - hash doesn't appear in url
-      $(this).parent().find( 'div' ).toggleClass( 'card-social-active' );
-      $(this).toggleClass('share-expanded');
-    });
   },
 
   onToggle:function(flag,cardId){
@@ -51,77 +45,95 @@ var CardList = React.createClass({
   },
 
   renderSwiper:function(){
-    var swiperWidth= $("#swiperId").width();
-    var slidesPerView = Math.floor(swiperWidth/320);
-        slidesPerView =(slidesPerView === 0 ?1:(slidesPerView >4?4:slidesPerView));
+    console.log(" Entring render Swiper renderSwiper ");
+    console.log('>>>>>>>>>>>>> Resized finished. width['+$( window ).width()+'] height['+$( window ).height()+']');
 
-    $('.swiper-container').width($("#swiperId").width());
+    var swiperContainerWidth = $('.swiper-container').width();
+    console.log("swiper-container [width :"+swiperContainerWidth+", heigh:"+$('.swiper-container').height());
+    var translateValue= ($('.swiper-container').height()-Constants.CARD_HEIGHT)/2;
+    console.log("swiper-wrapper translateValue:"+translateValue);
 
-    // this.setState({
-    //   slidesPerView:slidesPerView
-    // })
-    //
+    swiperContainerWidth >700 ? $('.swiper-container').addClass('cards-background-desktop'):$('.swiper-container').addClass('cards-background');
+
+    if(translateValue>0){
+      $(".card-wrapper").css("transform", "translate(0px,"+translateValue+"px)");
+    }
+    console.log("swiperContainerWidth:"+swiperContainerWidth);
+    if(swiperContainerWidth>500){
+
+         var marginValue = Math.floor((swiperContainerWidth - Constants.CARD_WIDTH)/5.5);
+         console.log("swiperContainerWidth (swiperContainerWidth - Constants.CARD_WIDTH) ="+(swiperContainerWidth - Constants.CARD_WIDTH));
+         console.log("swiperContainerWidth marginValue:"+marginValue);
+         $(".swiper-slide").css("margin-left",marginValue);
+         $(".swiper-slide").css("margin-right",marginValue);
+    }
+    console.log(".swiper-slide margin-right :"+  $(".swiper-slide").css("margin-right"));
+
+
     this.swiper = undefined;
 
-    //
+    //slidesOffsetBefore is OffsetBefore the left edg of the swiper container
     this.swiper = new Swiper('#swiperId', {
       preloadImages: false,
-      centeredSlides:true,
+      centeredSlides:false,
       keyboardControl:true,
       lazyLoading: true,
       centeredSlides:true,
-      slidesOffsetBefore:10,
-      slidesOffsetBefore:10,
-      slidesPerView:'auto',
+      slidesOffsetBefore:0,
+      slidesOffsetAfter:0,
+      slidesPerView: 'auto',
       pagination: '.swiper-pagination',
       paginationType: 'progress',
-      slidesPerColumn: (/Mobi/.test(navigator.userAgent)?1 :2)
+      slidesPerColumn: (/Mobi/.test(navigator.userAgent)?1 :1)
     });
-    this.swiper.on('onTransitionEnd', function(_swiper){
-      // _swiper.translate += (_swiper.activeIndex -1)*30;
-      // _swiper.setWrapperTranslate(_swiper.translate);
+    // this.swiper.on('onTransitionEnd', function(_swiper){
+    //   _swiper.translate += (_swiper.activeIndex -1)*30;
+    //   _swiper.setWrapperTranslate(_swiper.translate);
+    // });
+
+    $('.card-share > a').on('click', function(e){
+      e.preventDefault() // prevent default action - hash doesn't appear in url
+      $(this).parent().find( 'div' ).toggleClass( 'card-social-active' );
+      $(this).toggleClass('share-expanded');
     });
+
+
+    console.log(" END  render Swiper renderSwiper ");
   },
   render:function(){
-   var that = this;
-   var backgroundStyles ="swiper-container ";
-       backgroundStyles +=  (/Mobi/.test(navigator.userAgent)?' cards-background' :' cards-background-desktop');
+     var that = this;
+     var backgroundStyles ="swiper-container ";
 
-  //  $(window).resize(function() {
-  //       that.renderSwiper();
-  //  });
 
-   $(window).resize(function() {
-    clearTimeout(window.resizedFinished);
-    window.resizedFinished = setTimeout(function(){
-        console.log('Resized finished.');
-        that.setState({
-          resizeTimer: !that.state.resizeTimer
-        })
-    }, 250);
-   });
+     $(window).resize(function() {
+      clearTimeout(window.resizedFinished);
+      window.resizedFinished = setTimeout(function(){
+          that.setState({
+            resizeTimer: !that.state.resizeTimer
+          })
+      }, 250);
+     });
 
     var renderStartingCards = () =>{
-    var {cards} =  this.props; /* Using ES6 Object destructure Operator */
+    var {cards} =  this.props; //Using ES6 Object destructure Operator
       return cards.map((card) =>{
       switch (card.transient.type) {
        case Constants.REDACTION:
                 return (
-                      <Redaction key={card.id}  onToggle={this.onToggle} {...card}/>   /* Using ES6 Object Spread Operator */
+                      <Redaction key={card.id}  onToggle={this.onToggle} {...card}/>   //Using ES6 Object Spread Operator
                 )
        break;
       }
      });
     };
-
     return(
-          <div className={backgroundStyles} id="swiperId">
-                <div className="swiper-wrapper ">
-                    {renderStartingCards()}
-               </div>
-               <div className="swiper-pagination"></div>
+      <div className={backgroundStyles} id="swiperId">
+            <div className="swiper-wrapper ">
+                {renderStartingCards()}
            </div>
-        )
+           <div className="swiper-pagination"></div>
+       </div>
+    )
   }
 
 });

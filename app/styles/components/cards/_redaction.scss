@@ -1,10 +1,13 @@
 
-.wrapper {
-    max-width: $LMPCardWidth;
+.card-wrapper {
+    max-width: $LMPCardWidth; //270
+    height: $LMPCardHeight; //410 is the max atcual hieght is 457
     margin: 0px 0px;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
+
 /**
  * Helpers
  */
@@ -58,7 +61,12 @@
         min-height: 60px;
         width: 100%;
         opacity: 0.97;
-        background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8cmFkaWFsR3JhZGllbnQgaWQ9ImczNjQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjeD0iNTAlIiBjeT0iMTAwJSIgcj0iNzUlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGRkZGRiIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzQxNjlFMSIgb2Zmc2V0PSIxIi8+CjwvcmFkaWFsR3JhZGllbnQ+CjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNnMzY0KSIgLz4KPC9zdmc+);
+        /* SVG as background image (IE9/Chrome/Safari/Opera) */
+        background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8cmFkaWFsR3JhZGllbnQgaWQ9Imc0MzUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjeD0iMCUiIGN5PSIwJSIgcj0iMjAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiMwMDAiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYiIG9mZnNldD0iMyIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8cmVjdCB4PSItNTAiIHk9Ii01MCIgd2lkdGg9IjEwMSIgaGVpZ2h0PSIxMDEiIGZpbGw9InVybCgjZzQzNSkiIC8+Cjwvc3ZnPg==);
+        font-weight: bold;
+        text-shadow: 0px 1px 2px rgba(0,0,0,0.25);
+        box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.15);
+        transition: all .3s ease-in-out;
           .caption-content {
             margin-left: 1.5rem;
             margin-right: 1.5rem;
@@ -68,6 +76,7 @@
               margin-top: .8rem;
             margin-bottom: .8rem;
             font-weight: bold;
+            z-index: 2
         }
     }
         overlay {
@@ -262,7 +271,9 @@
 
 /* card article */
 .card-article{
-  margin-top: -1rem;
+  margin-top: -15px;
+  margin-bottom: 0px;
+
 }
 .card-article a {
 
@@ -286,20 +297,20 @@
   margin:5px;
 }
 .favorite-badge{
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: normal;
   position: absolute;
   top: -2px;
-  right: 0px;
+  right: -5px;
   margin-right:15px;
 }
 .history-badge{
   z-index: 1;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: normal;
   position: absolute;
   top: 3rem;
-  left: 0px;
+  left: -5px;
   margin-left:12px;
 
 }
@@ -314,7 +325,7 @@
 
 .card-timestamp{
   margin-top: 3rem;
-  padding-left: 0.5rem;
+  padding-left: 1.6rem;
   font-weight: bold;
   color: #fff;
   position: absolute;
@@ -333,7 +344,7 @@
      margin-left: -6px;
      margin-top: 0;
      position: absolute;
-     top:40%;
+     top:36%;
      width: 40%;
     -moz-box-shadow: 1px 1px 3px #292929;
     -webkit-box-shadow: 1px 1px 3px #292929;

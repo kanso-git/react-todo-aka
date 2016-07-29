@@ -6,62 +6,55 @@ var UserInfoLocalStorge= require('UserInfoLocalStorge');
 var CardList = require('CardList');
 var Utility = require('Utility');
 var ErrorModal = require('ErrorModal');
-
-
-var startingCards = [];
+var Loading = require('Loading');
 
 var Master = React.createClass({
   getDefaultProps: function() {
     return {
       isLoading: false,
-      errorMessage: undefined
+      errorMessage: undefined,
+      selectedMenuItem:undefined
     }
   },
   getInitialState:function(){
     return {
       cards:[],
-      selectedMenuItem:'NA'
+      selectedMenuItem:this.props.selectedMenuItem
     }
   },
   getCardsPromise:function(){
-        var promiseUserInfo =MatinPremiumAPI.getUserInfo();
-        var that = this;
+    var promiseUserInfo = MatinPremiumAPI.getUserInfo();
+    var that = this;
 
-        this.setState({
-          cards:[],
-          isLoading :true,
-          errorMessage: undefined
+    this.setState({
+        cards: [],
+        isLoading: true,
+        errorMessage: undefined
+    });
 
-         });
-
-          var promiseStartingCards =  promiseUserInfo.then(rUserInfo =>{
-                console.log("Master promiseUserInfo then",rUserInfo);
-                return Utility.handlePromiseUserInfo(rUserInfo).
-                then(function(_cards){
-                 console.log("my _cards ",_cards);
-                 var startingCards= Utility.handlePromiseStartingCards(_cards);
-                 console.log("my startingCards ",startingCards);
-                 that.setState({
-                   cards:startingCards,
-                   errorMessage:undefined,
-                   isLoading:false
-                 })
-                });
-            }).catch(function(error){
-                    console.log("Master promiseUserInfo error",error);
-                    that.setState({
-                      cards:[],
-                      errorMessage: error.message,
-                      isLoading:false
-                    })
-            });
-
-    console.log("Master promiseStartingCards the return Object ",promiseStartingCards);
+    var promiseStartingCards = promiseUserInfo.then(rUserInfo => {
+        return Utility.handlePromiseUserInfo(rUserInfo).
+        then(function(rCards) {
+            that.setState({
+                cards: Utility.handlePromiseStartingCards(rCards),
+                errorMessage: undefined,
+                isLoading: false
+            })
+        });
+    }).catch(function(error) {
+        console.error("Master getCardsPromise error:", error);
+        that.setState({
+            cards: [],
+            errorMessage: error.message,
+            isLoading: false
+        })
+    });
   },
   componentDidMount: function(){
-   // load the cards when component
+     // load the cards when component did mount
       this.getCardsPromise();
   },
+
   shouldComponentUpdate: function(nextProps, nextState) {
 
     // if(nextState.selectedMenuItem === 'NA' ){
@@ -75,60 +68,57 @@ var Master = React.createClass({
     return true;
 
   },
-  componentWillReceiveProps: function(newProps){
-     console.log("Master  componentWillReceiveProps ...")
-      var menuSel =newProps.location.query.menuSel;
+  componentWillReceiveProps: function(newProps) {
+      console.log("Master  componentWillReceiveProps ...")
+      var menuSel = newProps.location.query.menuSel;
       this.setState({
-          selectedMenuItem:menuSel
+          selectedMenuItem: menuSel
       })
-      if(typeof menuSel ==='string' && menuSel.trim().length>0){
-        console.log("Master  componentWillReceiveProps ... menuSel",menuSel);
-        window.location.hash ='#/';
+      if (typeof menuSel === 'string' && menuSel.trim().length > 0) {
+          console.log("Master  componentWillReceiveProps ... menuSel", menuSel);
+          window.location.hash = '#/';
       }
-    },
-
-    handleToggle: function(flag,cardId){
-
-        var {cards} = this.state;
-        switch (flag) {
+  },
+  handleToggle: function(flag, cardId) {
+      var {cards} = this.state;
+      switch (flag) {
           case Constants.TOGGLE_LIKE:
-             var newCards = Utility.handleCardLike(cards,cardId);
-             this.setState({cards :newCards});
-          break;
-         case Constants.TOGGLE_HISTORY:
-            var newCards = Utility.handleCardHistory(cards,cardId);
-            this.setState({cards :newCards});
-          break;
-         case Constants.TOGGLE_FAVORITE:
-            var newCards = Utility.handleCardHFavorite(cards,cardId);
-            this.setState({cards :newCards});
-         break;
+              this.setState({
+                  cards: Utility.handleCardLike(cards, cardId)
+              });
+              break;
+          case Constants.TOGGLE_HISTORY:
+              this.setState({
+                  cards: Utility.handleCardHistory(cards, cardId)
+              });
+              break;
+          case Constants.TOGGLE_FAVORITE:
+              this.setState({
+                  cards: Utility.handleCardFavorite(cards, cardId)
+              });
+              break;
       }
-
-    },
+  },
   render:function(){
         var {cards,isLoading,errorMessage} = this.state;
         var that = this;
+
         function renderMessage(){
-            //debugger;
             if(isLoading){
-              return <progress className="success text-center" max="100" value="75">Fecthing the Cards ...</progress>
+               return <Loading />;
             }else if(cards && cards.length>0){
-              return  <CardList onToggle={that.handleToggle} cards={cards} />;
+               return  <CardList onToggle={that.handleToggle} cards={cards} />;
             }
-          }
-          function renderError(){
-           //debugger;
+        }
+       function renderError(){
            if(typeof errorMessage === 'string'){
              return (
                <ErrorModal message={errorMessage}/>
              )
            }
-          }
-
-
+       }
     return(
-      <div>
+      <div >
         {renderMessage()}
         {renderError()}
       </div>
