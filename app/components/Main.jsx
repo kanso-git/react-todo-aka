@@ -6,7 +6,7 @@ var Main = (props)=>{
   return (
     <div>
         <Nav/>
-        <div className="wrap-center">
+        <div className="wrap-center container-fluid">
             {props.children}
         </div>
         <Footer/>
