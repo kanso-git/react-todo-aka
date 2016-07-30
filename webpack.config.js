@@ -27,6 +27,7 @@ module.exports = {
       'node_modules',
       './app/components',
       './app/components/cards',
+      './app/components/nav-menu',
       './app/components/articles',
       './app/api',
       './app/scripts'

@@ -5,8 +5,10 @@ var Constants = require('Constants');
 var Redaction = require('Redaction');
 var Divertissement = require('Divertissement');
 var Publicite = require('Publicite');
-var {browserHistory, hashHistory} = require('react-router');
-var swiperObject =null;
+
+
+
+
 var CardList = React.createClass({
 
   getInitialState:function(){
@@ -53,7 +55,15 @@ var CardList = React.createClass({
     var translateValue= ($('.swiper-container').height()-Constants.CARD_HEIGHT)/2;
     console.log("swiper-wrapper translateValue:"+translateValue);
 
-    swiperContainerWidth >700 ? $('.swiper-container').addClass('cards-background-desktop'):$('.swiper-container').addClass('cards-background');
+    if(swiperContainerWidth >700 ){
+      $('.swiper-container').addClass('cards-background-desktop');
+      $('footer').css('display','none');
+      $('.swiper-container').height( $(window).height() -44);
+    }else{
+      $('footer').css('visibility','visible');
+      $('footer').css('display','');
+      $('.swiper-container').addClass('cards-background');
+    }
 
     if(translateValue>0){
       $(".card-wrapper").css("transform", "translate(0px,"+translateValue+"px)");

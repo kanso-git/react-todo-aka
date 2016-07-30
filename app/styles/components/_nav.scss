@@ -1,3 +1,8 @@
+.navcontainer {
+  overflow: hidden;
+  height: 100%;
+}
+
 .navigation {
     display: flex;
     flex-direction: row;
@@ -7,11 +12,12 @@
     .navigation-left {
         display: flex;
         flex-direction: column;
-        .menu {
+        .menubtn {
+          list-style-type:none;
             background-color: $LMPOrnage;
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0px;
+            left: -22px;
             width: 45px;
             height: 44px;
             justify-content: center;
@@ -22,7 +28,8 @@
     .navigation-right {
         display: flex;
         flex-direction: column;
-        .menu {
+        .menubtn {
+          list-style-type:none;
             justify-content: center;
             align-items: center;
             display: flex;

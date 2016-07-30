@@ -1,0 +1,15 @@
+
+.loading{
+    align-items: center;
+    background-color: $LMPBlack;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    margin: auto auto;
+
+
+    .loading-image{
+      align-content: center;
+    }
+
+}

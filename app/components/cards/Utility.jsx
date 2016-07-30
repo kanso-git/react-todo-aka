@@ -19,7 +19,6 @@ var userCheckedServices = [];
 var userUncheckedServices = [];
 
 
-
 module.exports = {
   handlePromiseUserInfo :function(rUserInfo){
     if(rUserInfo.data ){

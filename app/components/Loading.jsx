@@ -17,7 +17,8 @@ var Loading = ()=>{
   };
 
   return (
-    <div style={divStyle}>
+    <div className="loading" >
+      <img className="loading-image" src='loading.gif'></img>
    </div>
   );
 
