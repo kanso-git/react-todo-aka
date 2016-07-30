@@ -21,7 +21,11 @@ module.exports = {
   MARGIN_BTW_CARDS:10,
   MENU_RIGHT:'right',
   MENU_LEFT:'left',
-  
+  DEFAULT_LEFT_MENU:'main',
+  MAIN_LEFT_MENU:'main',
+  INTERESTS_LEFT_MENU:'interests',
+  SERVICES_LEFT_MENU:'services',
+
   IS_MOBILE:{
     Android: function() {
         return navigator.userAgent.match(/Android/i);

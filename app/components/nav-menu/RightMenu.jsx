@@ -1,10 +1,12 @@
 var React = require('react');
-var {Link, IndexLink} = require('react-router');
+
 
 var RightMenu = React.createClass({
+
   render:function(){
-    var className = this.props.toggleMenu ? 'navigationshowright' : 'navigationhide';
-    console.log("class name left menu " + className);
+    var {isVisible} = this.props;
+    var className = isVisible ? 'navigationshowright' : 'navigationhide';
+
     return (
         <div className={className}>
         	<table className="tablec">

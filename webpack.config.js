@@ -28,6 +28,9 @@ module.exports = {
       './app/components',
       './app/components/cards',
       './app/components/nav-menu',
+      './app/components/nav-menu/left-items',
+      './app/components/nav-menu/left-items/interests',
+      './app/components/nav-menu/left-items/services',
       './app/components/articles',
       './app/api',
       './app/scripts'
