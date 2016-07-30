@@ -8,6 +8,7 @@ var RightMenu = React.createClass({
     return (
         <div className={className}>
         	<table className="tablec">
+            <tbody>
         		<tr>
         			<td className="tabletd">
         				<p className="text_right">Mon Compte</p>
@@ -33,6 +34,7 @@ var RightMenu = React.createClass({
         				<p className="text_right">Deconnexion</p>
         			</td>
         		</tr>
+            </tbody>
         	</table>
         </div>
     );

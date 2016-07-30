@@ -16,7 +16,6 @@ var InterestMenu = React.createClass({
     };
   },
 
-
   getCategoriesCard:function(){
     var userInfo = UserInfoLocalStorge.getUserInfo();
     this.setState({cards: userInfo.categories})
@@ -67,6 +66,7 @@ var InterestMenu = React.createClass({
           isChecked={cat[Object.keys(cat)[0]]} />
       );
     }.bind(this));
+
     return (
       <div className={className}>
       	<i className="fa fa-chevron-left designtext"
@@ -90,7 +90,7 @@ var InterestMenu = React.createClass({
                aria-hidden="true"></i>
       	</div>
       	<table>
-      		<tbody>   {rows}  </tbody>
+      		<tbody> {rows}  </tbody>
       	</table>
       </div>
     );
