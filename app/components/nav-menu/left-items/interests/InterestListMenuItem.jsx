@@ -5,7 +5,6 @@ var UserInfoLocalStorge= require('UserInfoLocalStorge');
 var InterestCheckboxItem = require('InterestCheckboxItem');
 
 
-//flipped={flipped} isVisible={isVisible}   onFlipperClick
 var InterestListMenuItem = React.createClass({
 
   getInitialState:function(){

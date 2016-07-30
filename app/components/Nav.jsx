@@ -46,10 +46,9 @@ render:function(){
   return (
     <div className="navigation">
         <div className="navigation-left">
-            <ul className="menubtn">
+            <ul className="menubtn" onClick={() =>this.handleToggleMenu('left')} >
                 <li>
-                    <i className="fa fa-bars fa-lg" aria-hidden="true" title="Toggle navigation"
-                      onClick={() =>this.handleToggleMenu('left')}></i>
+                    <i className="fa fa-bars fa-lg" aria-hidden="true" title="Toggle navigation"></i>
                     <LeftMenu isVisible={showLeftMenu}  mobileVersion={isMobile}/>
               </li>
             </ul>
@@ -59,10 +58,9 @@ render:function(){
             <p><b>Le matin </b> du soir</p>
         </div>
         <div className="navigation-right">
-            <ul className="menubtn" >
+            <ul className="menubtn" onClick={() =>this.handleToggleMenu('right')} >
                 <li>
-                    <i className="fa fa-cog fa-lg" aria-hidden="true" title="Toggle navigation"
-                      onClick={() =>this.handleToggleMenu('right')}></i>
+                    <i className="fa fa-cog fa-lg" aria-hidden="true" title="Toggle navigation"></i>
                     <RightMenu isVisible={showRightMenu}  />
                 </li>
             </ul>
