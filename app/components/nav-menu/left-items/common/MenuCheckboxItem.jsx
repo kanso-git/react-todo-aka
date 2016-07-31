@@ -8,20 +8,12 @@ var MenuCheckboxItem = React.createClass({
   },
   render: function() {
    var {categoryName,isCategoryChecked} = this.props;
-    return (
-      <tr   onClick={this.onToggleCheckbox}>
+    return (<tr  onClick={this.onToggleCheckbox}>
         <td>
-          <input
-            type="checkbox"
-            checked={isCategoryChecked}
-            onChange={this.onToggleCheckbox}
-          />
+          <input type="checkbox" checked={isCategoryChecked} onChange={this.onToggleCheckbox}/>
         </td>
-        <td>
-          {categoryName}
-        </td>
-      </tr>
-    );
+        <td>{categoryName}</td>
+      </tr>);
   }
 });
 

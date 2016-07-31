@@ -56,24 +56,22 @@ var InterestListMenuItem = React.createClass({
             <MenuCheckboxItem key={key}
                    onToggleCheckbox={this.handleToggleCheckbox}
                    menuName={Constants.INTERESTS_LEFT_MENU}
-                categoryName={categoryName} isCategoryChecked={isCategoryChecked} />
+                categoryName={categoryName} isCategoryChecked={isCategoryChecked}/>
 
           )
         }
       )
-    return (
-      <div className="navigationshowmobile front tile">
+    return (<div className="navigationshowmobile front tile">
       	<i className="fa fa-chevron-left designtext"  aria-hidden="true"  onClick=""></i>
       	<span className="title-menu"   onClick={this.onMenuSwitchView(Constants.MAIN_LEFT_MENU)}>Menu</span>
       	<span className="title">
          Mes interets
          </span>
-      	<input  type="search" placeholder="Search"    className="sidebarsearch"/>
+      	<input type="search" placeholder="Search" className="sidebarsearch"/>
       	<table>
-      		<tbody> {categoryRows}  </tbody>
+      		<tbody>{categoryRows}</tbody>
       	</table>
-      </div>
-    );
+      </div>);
   }
 });
 
