@@ -2,7 +2,7 @@ var React = require('react');
 
 var Constants = require('Constants');
 var UserInfoLocalStorge= require('UserInfoLocalStorge');
-var InterestCheckboxItem = require('InterestCheckboxItem');
+var MenuCheckboxItem = require('MenuCheckboxItem');
 
 
 var InterestListMenuItem = React.createClass({
@@ -25,7 +25,7 @@ var InterestListMenuItem = React.createClass({
     return ()=> this.props.onMenuSwitchView(value);
   },
 
-  handleToggleCheckbox:function(catId){
+  handleToggleCheckbox:function(catId, menuName){
     var {categories} = this.state;
     var newLikeCards = [];
     var myCategories = categories.map((cat) => {
@@ -53,8 +53,9 @@ var InterestListMenuItem = React.createClass({
           var isCategoryChecked =category[Object.keys(category)[0]];
 
           return (
-            <InterestCheckboxItem key={key}
+            <MenuCheckboxItem key={key}
                    onToggleCheckbox={this.handleToggleCheckbox}
+                   menuName={Constants.INTERESTS_LEFT_MENU}
                 categoryName={categoryName} isCategoryChecked={isCategoryChecked} />
 
           )

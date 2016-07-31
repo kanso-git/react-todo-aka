@@ -29,6 +29,7 @@ module.exports = {
       './app/components/cards',
       './app/components/nav-menu',
       './app/components/nav-menu/left-items',
+      './app/components/nav-menu/left-items/common',
       './app/components/nav-menu/left-items/interests',
       './app/components/nav-menu/left-items/services',
       './app/components/articles',

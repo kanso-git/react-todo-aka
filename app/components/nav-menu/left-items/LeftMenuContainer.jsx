@@ -1,7 +1,7 @@
 var React = require('react');
 
 var Constants = require('Constants');
-var LeftInitialMenu = require('LeftInitialMenu');
+var LeftMainMenu = require('LeftMainMenu');
 var InterestListMenuItem = require('InterestListMenuItem');
 
 var {Link, IndexLink} = require('react-router');
@@ -37,7 +37,7 @@ var LeftMenuContainer = React.createClass({
 
       switch (visibleMenuItem) {
         case Constants.MAIN_LEFT_MENU:
-           return <LeftInitialMenu  onMenuSwitchView={this.hanleMenuSwitchView}/>
+           return <LeftMainMenu  onMenuSwitchView={this.hanleMenuSwitchView}/>
         break;
         case Constants.INTERESTS_LEFT_MENU:
            return <InterestListMenuItem  onMenuSwitchView={this.hanleMenuSwitchView}/>

@@ -20,8 +20,12 @@ var Nav = React.createClass({
       };
     },
 
-  handleToggleMenu:function(menuposition) {
-
+  handleToggleMenu:function(menuposition ,e) {
+     var clikOriginCLass = $(e.target) ? $(e.target).prop("class") :null
+     console.log(clikOriginCLass)
+     if(clikOriginCLass !== "fa fa-cog fa-lg" &&  clikOriginCLass !== "fa fa-bars fa-lg"){
+          return ;
+     }
      //onToggleMenu={this.handleToggleMenu}
       switch (menuposition) {
         case Constants.MENU_RIGHT:
@@ -46,8 +50,8 @@ render:function(){
   return (
     <div className="navigation">
         <div className="navigation-left">
-            <ul className="menubtn" onClick={() =>this.handleToggleMenu('left')} >
-                <li>
+            <ul className="menubtn"   onClick={(e) =>this.handleToggleMenu('left',e)}>
+                <li >
                     <i className="fa fa-bars fa-lg" aria-hidden="true" title="Toggle navigation"></i>
                     <LeftMenu isVisible={showLeftMenu}  mobileVersion={isMobile}/>
               </li>
@@ -58,8 +62,8 @@ render:function(){
             <p><b>Le matin </b> du soir</p>
         </div>
         <div className="navigation-right">
-            <ul className="menubtn" onClick={() =>this.handleToggleMenu('right')} >
-                <li>
+            <ul className="menubtn"   onClick={(e) =>this.handleToggleMenu('right',e)} >
+                <li >
                     <i className="fa fa-cog fa-lg" aria-hidden="true" title="Toggle navigation"></i>
                     <RightMenu isVisible={showRightMenu}  />
                 </li>
