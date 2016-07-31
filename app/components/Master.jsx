@@ -52,6 +52,7 @@ var Master = React.createClass({
   },
   componentDidMount: function(){
      // load the cards when component did mount
+      console.log("Master.jsx componentDidMount get called")
       this.getCardsPromise();
   },
 
@@ -70,14 +71,16 @@ var Master = React.createClass({
   },
   componentWillReceiveProps: function(newProps) {
       console.log("Master  componentWillReceiveProps ...")
-      var menuSel = newProps.location.query.menuSel;
+      var menuSelection = newProps.location.query.menuSelection;
+      console.log("Master  componentWillReceiveProps ... menuSelection", menuSelection);
       this.setState({
-          selectedMenuItem: menuSel
+          selectedMenuItem: menuSelection
       })
-      if (typeof menuSel === 'string' && menuSel.trim().length > 0) {
-          console.log("Master  componentWillReceiveProps ... menuSel", menuSel);
-          window.location.hash = '#/';
-      }
+      //getTheNewCards based on the menu selection
+      // if (typeof menuSelection === 'string' && menuSelection.trim().length > 0) {
+      //     console.log("Master  componentWillReceiveProps ... menuSelection", menuSelection);
+      //     window.location.hash = '#/';
+      // }
   },
   handleToggle: function(flag, cardId) {
       var {cards} = this.state;

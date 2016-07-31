@@ -3,6 +3,8 @@ var React = require('react');
 var Constants = require('Constants');
 var LeftMainMenu = require('LeftMainMenu');
 var InterestListMenuItem = require('InterestListMenuItem');
+var ServicesListMenuItem = require('ServicesListMenuItem');
+
 
 var {Link, IndexLink} = require('react-router');
 
@@ -20,7 +22,13 @@ var LeftMenuContainer = React.createClass({
      })
 
   },
-
+  handleLinkMenuClick: function(menu_name){
+    console.log("menu_name",menu_name)
+    if(typeof menu_name ==='string' && menu_name.trim().length>0){
+      window.location.hash ='#/?menuSelection='+encodeURIComponent(menu_name);
+    }
+    $('#menubtn_left').click();
+  },
   render: function() {
 
     var {isMobile,isVisible,orientation}   = this.props;
@@ -37,13 +45,13 @@ var LeftMenuContainer = React.createClass({
 
       switch (visibleMenuItem) {
         case Constants.MAIN_LEFT_MENU:
-           return <LeftMainMenu  onMenuSwitchView={this.hanleMenuSwitchView}/>
+           return <LeftMainMenu  onLinkMenuClick ={this.handleLinkMenuClick} onMenuSwitchView={this.hanleMenuSwitchView}/>
         break;
         case Constants.INTERESTS_LEFT_MENU:
            return <InterestListMenuItem  onMenuSwitchView={this.hanleMenuSwitchView}/>
         break;
         case Constants.SERVICES_LEFT_MENU:
-           return <InterestListMenuItem  onMenuSwitchView={this.hanleMenuSwitchView}/>
+           return <ServicesListMenuItem  onMenuSwitchView={this.hanleMenuSwitchView}/>
         break;
       }
     };

@@ -56,7 +56,7 @@ var InterestListMenuItem = React.createClass({
             <MenuCheckboxItem key={key}
                    onToggleCheckbox={this.handleToggleCheckbox}
                    menuName={Constants.INTERESTS_LEFT_MENU}
-                categoryName={categoryName} isCategoryChecked={isCategoryChecked}/>
+                elementName={categoryName} isElementChecked={isCategoryChecked}/>
 
           )
         }

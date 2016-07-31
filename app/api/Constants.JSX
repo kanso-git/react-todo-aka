@@ -25,6 +25,9 @@ module.exports = {
   MAIN_LEFT_MENU:'main',
   INTERESTS_LEFT_MENU:'interests',
   SERVICES_LEFT_MENU:'services',
+  SUJET_ACTUEL_LEFT_MENU:'sujet_actuel',
+  FAVORITE_LEFT_MENU:'favoris',
+  HISTORY_LEFT_MENU:'history',
 
   IS_MOBILE:{
     Android: function() {
