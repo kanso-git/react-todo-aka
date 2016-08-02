@@ -103,8 +103,8 @@ module.exports = {
       // Send a POST request
       return  axios({
           method: 'get',
-          url: 'http://dev.lematindusoir.ch/wp-json/user/getUserInfos'
-
+          url: 'http://dev.lematindusoir.ch/wp-json/user/getUserInfos',
+          headers: {'C1-User-ID': 665}
         }).then(function (response) {
             console.log(response);
             return response.data;
