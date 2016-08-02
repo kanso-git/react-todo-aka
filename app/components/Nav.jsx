@@ -49,7 +49,10 @@ var Nav = React.createClass({
         default:
       }
 },
-
+handleLogoClick :function(){
+   console.log('Nav.jsx logo Cliked ');
+   window.location.hash ='#/?menuSelection='+encodeURIComponent(Constants.HOME_TITLE);
+},
 render:function(){
    var {showLeftMenu,showRightMenu,isMobile} = this.state;
 
@@ -65,7 +68,7 @@ render:function(){
         </div>
 
         <div className="navigation-title">
-            <p><b>Le matin </b> du soir</p>
+            <p className="home-title" onClick={this.handleLogoClick}><b >Le matin </b> du soir</p>
         </div>
         <div className="navigation-right">
             <ul className="menubtn"  id="menubtn_right"   onClick={(e) =>this.handleToggleMenu(Constants.MENU_RIGHT,e)} >

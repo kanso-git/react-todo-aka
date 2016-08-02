@@ -28,6 +28,7 @@ module.exports = {
   SUJET_ACTUEL_LEFT_MENU:'sujet_actuel',
   FAVORITE_LEFT_MENU:'favoris',
   HISTORY_LEFT_MENU:'history',
+  HOME_TITLE:'le matin du soir',
 
   IS_MOBILE:{
     Android: function() {

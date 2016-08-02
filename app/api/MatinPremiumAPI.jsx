@@ -9,18 +9,37 @@ var Constants = require('Constants');
 const LMP_API_URL = Constants.BASE_URL;
 const TIME_IN_MS =Constants.SESSION_DURATION_USERINFO;
 
-var cardstUrl = `${LMP_API_URL}getStartingCards/0`;
+var startingCardsUrl = `${LMP_API_URL}getStartingCards/0`;
 var userInfoUrl = `${LMP_API_URL}user/getUserInfos/0`;
+
+
+
+var toggleLikeUrl = `${LMP_API_URL}user/toggleLike`;
+var toggleFavoriteUrl = `${LMP_API_URL}user/toggleFavorite`;
+var deleteCardUrl = `${LMP_API_URL}user/deleteCard`;
+var removeCardFromHistoryUrl = `${LMP_API_URL}user/removeCardFromHistory`;
 
 module.exports = {
 
+  /*
+    Provide all the cards we need to display when we start the application
+  */
   getStartingCards : function(){
-    return   axios.get(cardstUrl).then(
-               res => res.data,
-               error=> console.log('error getCards...')
-             )
+    return   axios.get(startingCardsUrl)
+      .then( res => res.data)
+      .catch(error => error )
   },
 
+  /*
+      Provide all the infos relative to a specifc user:
+      User name
+      Favorite cards ids
+      Delete cards ids
+      Like Cards ids
+      History Cards ids
+      Categories (sometimes called “intérêts” or “Themes” in different documents)
+      Services ( specific categories )
+  */
   getUserInfo : function(){
     var userInfoPromise = new Promise(function(resolve,reject){
        console.log("MatinPremiumAPI - userInfoPromise: UserInfoLocalStorge.getUserInfo()", UserInfoLocalStorge.getUserInfo());
@@ -35,8 +54,66 @@ module.exports = {
        }
     });
     return userInfoPromise;
-  }
+  },
 
+
+ /*
+  Used to get the cards* by their id(s)
+  cards are :favorite, viewed, deleted
+  Provide all the cards that we provided the ids separted by commas
+  {cardid1,cardid2,cardid3….}
+  */
+
+  getCards: function(arrayOfCardIds) {
+    var encodedParam = encodeURIComponent(arrayOfCardIds);
+    var requestUrl = `${LMP_API_URL}getCards/${encodedParam}`;
+    console.log("getCards -requestUrl "+requestUrl);
+    return  axios.get(requestUrl)
+      .then( res => res.data)
+      .catch( error => error)
+  },
+
+  /*
+   Used to get the cards that are flagged as Sujet Acutel.
+  */
+  getSujetActuelCards: function() {
+    var requestUrl = `${LMP_API_URL}getCardsDiscovery/0`;
+    console.log("getSujetActuelCards -requestUrl "+requestUrl);
+    return  axios.get(requestUrl)
+      .then( res => res.data)
+      .catch( error => error)
+  },
+
+
+   toggleLike:function(cardId){
+     axios.post('/user', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  },
+
+   getUserInfoTest:function(){
+      // Send a POST request
+      return  axios({
+          method: 'get',
+          url: 'http://dev.lematindusoir.ch/wp-json/user/getUserInfos',
+          headers: {'Access-Control-Allow-Origin': '*'}
+        }).then(function (response) {
+            console.log(response);
+            return response.data;
+          })
+          .catch(function (error) {
+            console.log(error.message);
+            return error;
+          });
+   }
 
   // getCards: function(param) {
   //   var encodedParam = encodeURIComponent(param);

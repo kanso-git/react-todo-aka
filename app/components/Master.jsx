@@ -54,6 +54,14 @@ var Master = React.createClass({
      // load the cards when component did mount
       console.log("Master.jsx componentDidMount get called")
       this.getCardsPromise();
+
+      //test
+      var promiseUserInfotest = MatinPremiumAPI.getUserInfoTest();
+      promiseUserInfotest.then(function(info){
+        console.log(" promiseUserInfotest",info);
+      }).catch(function(e){
+        console.error('we got an error ',e);
+      })
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -73,14 +81,43 @@ var Master = React.createClass({
       console.log("Master  componentWillReceiveProps ...")
       var menuSelection = newProps.location.query.menuSelection;
       console.log("Master  componentWillReceiveProps ... menuSelection", menuSelection);
-      this.setState({
-          selectedMenuItem: menuSelection
-      })
+
       //getTheNewCards based on the menu selection
-      // if (typeof menuSelection === 'string' && menuSelection.trim().length > 0) {
-      //     console.log("Master  componentWillReceiveProps ... menuSelection", menuSelection);
-      //     window.location.hash = '#/';
-      // }
+      if (typeof menuSelection === 'string' && menuSelection.trim().length > 0) {
+          console.log("Master  componentWillReceiveProps ... menuSelection", menuSelection);
+
+          if(menuSelection ==  Constants.HOME_TITLE){
+            this.getCardsPromise();
+          }else{
+            //TODO delete the below parameter and send an object instead
+            var switchParamTempUse = menuSelection == Constants.FAVORITE_LEFT_MENU ?1 :2;
+
+            var promiseCardsPerMenu ;
+            menuSelection ==  Constants.SUJET_ACTUEL_LEFT_MENU ? promiseCardsPerMenu = MatinPremiumAPI.getSujetActuelCards() : promiseCardsPerMenu =MatinPremiumAPI.getCards(switchParamTempUse);
+
+            this.setState({
+                cards: [],
+                isLoading: true,
+                errorMessage: undefined,
+                selectedMenuItem: menuSelection
+            });
+            var that = this;
+            promiseCardsPerMenu.then(menuCards => {
+                    that.setState({
+                        cards: Utility.handlePromiseStartingCards(menuCards),
+                        errorMessage: undefined,
+                        isLoading: false
+                    })
+            }).catch(function(error) {
+                console.error("Master promiseCardsPerMenu error:", error);
+                that.setState({
+                    cards: [],
+                    errorMessage: error.message,
+                    isLoading: false
+                })
+            });
+          }
+      }
   },
   handleToggle: function(flag, cardId) {
       var {cards} = this.state;

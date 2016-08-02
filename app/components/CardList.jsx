@@ -17,11 +17,11 @@ var CardList = React.createClass({
     };
   },
   componentDidMount:function(){
-    console.log("componentDidMount has been mounted -> renderSwiper");
+    console.log("CardList - componentDidMount has been mounted -> renderSwiper");
     this.renderSwiper();
   },
   shouldComponentUpdate: function(nextProps, nextState) {
-    console.log(" shouldComponentUpdate Start");
+    console.log("CardList - shouldComponentUpdate Start");
     // if(nextState.selectedMenuItem === 'NA' ){
     //   console.log("shouldComponentUpdate NA case - YES");
     //   return true;
@@ -32,14 +32,14 @@ var CardList = React.createClass({
     // return false ;
 
      if(nextState.resizeTimer !== this.state.resizeTimer){
-         console.log("shouldComponentUpdate reload me ");
+         console.log("CardList - shouldComponentUpdate reload me ");
          location.reload();
      }
     return true;
 
   },
   componentWillReceiveProps: function(newProps){
-    console.log(" componentWillReceiveProps new props have been received ");
+    console.log("CardList - componentWillReceiveProps new props have been received ");
   },
 
   onToggle:function(flag,cardId){
@@ -47,13 +47,12 @@ var CardList = React.createClass({
   },
 
   renderSwiper:function(){
-    console.log(" Entring render Swiper renderSwiper ");
-    console.log('>>>>>>>>>>>>> Resized finished. width['+$( window ).width()+'] height['+$( window ).height()+']');
+    
+    console.log("CardList - Entring render Swiper renderSwiper ");
+    console.log('CardList - >>>>>>>>>>>>> Resized finished. width['+$( window ).width()+'] height['+$( window ).height()+']');
     $('.swiper-container').height( $('footer.footer').offset().top -44);
     var swiperContainerWidth = $('.swiper-container').width();
-    console.log("swiper-container [width :"+swiperContainerWidth+", heigh:"+$('.swiper-container').height());
-    var translateValue= ($('.swiper-container').height()-Constants.CARD_HEIGHT)/2;
-    console.log("swiper-wrapper translateValue:"+translateValue);
+
 
     if(swiperContainerWidth >700 ){
       $('.swiper-container').addClass('cards-background-desktop');
@@ -65,15 +64,13 @@ var CardList = React.createClass({
       $('.swiper-container').addClass('cards-background');
     }
 
-    if(translateValue>0){
-      $(".card-wrapper").css("transform", "translate(0px,"+translateValue+"px)");
-    }
-    console.log("swiperContainerWidth:"+swiperContainerWidth);
+
+    console.log("CardList - swiperContainerWidth:"+swiperContainerWidth);
     if(swiperContainerWidth>500){
 
          var marginValue = Math.floor((swiperContainerWidth - Constants.CARD_WIDTH)/5.5);
-         console.log("swiperContainerWidth (swiperContainerWidth - Constants.CARD_WIDTH) ="+(swiperContainerWidth - Constants.CARD_WIDTH));
-         console.log("swiperContainerWidth marginValue:"+marginValue);
+         console.log("CardList - swiperContainerWidth (swiperContainerWidth - Constants.CARD_WIDTH) ="+(swiperContainerWidth - Constants.CARD_WIDTH));
+         console.log("CardList -  swiperContainerWidth marginValue:"+marginValue);
          $(".swiper-slide").css("margin-left",marginValue);
          $(".swiper-slide").css("margin-right",marginValue);
     }
@@ -107,8 +104,15 @@ var CardList = React.createClass({
       $(this).toggleClass('share-expanded');
     });
 
+    console.log("CardList - swiper-container [width :"+swiperContainerWidth+", heigh:"+$('.swiper-container').height());
+    var translateValue= ($('.swiper-container').height()-Constants.CARD_HEIGHT)/2;
+    console.log("CardList - swiper-wrapper translateValue:"+translateValue);
 
-    console.log(" END  render Swiper renderSwiper ");
+    if(translateValue>0){
+      $(".card-wrapper").css("transform", "translate(0px,"+translateValue+"px)");
+    }
+
+    console.log("CardList -  END  render Swiper renderSwiper ");
   },
   render:function(){
      var that = this;
