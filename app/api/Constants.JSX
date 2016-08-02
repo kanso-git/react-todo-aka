@@ -2,6 +2,9 @@
    please put all the resusable constants here
    also all the wording used accorssed the app.
 
+    BASE_URL:"https://lmpapp-api.herokuapp.com/wp-json/",
+    BASE_URL:"http://dev.lematindusoir.ch/wp-json/",
+
 */
 module.exports = {
   BASE_URL:"https://lmpapp-api.herokuapp.com/wp-json/",

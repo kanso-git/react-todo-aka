@@ -56,12 +56,12 @@ var Master = React.createClass({
       this.getCardsPromise();
 
       //test
-      var promiseUserInfotest = MatinPremiumAPI.getUserInfoTest();
-      promiseUserInfotest.then(function(info){
-        console.log(" promiseUserInfotest",info);
-      }).catch(function(e){
-        console.error('we got an error ',e);
-      })
+      // var promiseUserInfotest = MatinPremiumAPI.getUserInfoTest();
+      // promiseUserInfotest.then(function(info){
+      //   console.log(" promiseUserInfotest",info);
+      // }).catch(function(e){
+      //   console.error('we got an error ',e);
+      // })
   },
 
   shouldComponentUpdate: function(nextProps, nextState) {

@@ -10,14 +10,17 @@ const LMP_API_URL = Constants.BASE_URL;
 const TIME_IN_MS =Constants.SESSION_DURATION_USERINFO;
 
 var startingCardsUrl = `${LMP_API_URL}getStartingCards/0`;
-var userInfoUrl = `${LMP_API_URL}user/getUserInfos/0`;
-
+var userInfoUrl = `${LMP_API_URL}user/getUserInfos`;
 
 
 var toggleLikeUrl = `${LMP_API_URL}user/toggleLike`;
 var toggleFavoriteUrl = `${LMP_API_URL}user/toggleFavorite`;
 var deleteCardUrl = `${LMP_API_URL}user/deleteCard`;
 var removeCardFromHistoryUrl = `${LMP_API_URL}user/removeCardFromHistory`;
+
+//TODO delete the headersObject
+//  var headersObject ={'C1-User-ID': 665};
+var headersObject ={};
 
 module.exports = {
 
@@ -47,7 +50,7 @@ module.exports = {
         var elapsedTimeSinceLastSave = moment().unix() - UserInfoLocalStorge.getUserInfo().updated;
         console.log("MatinPremiumAPI - userInfoPromise: elapsedTimeSinceLastSave", elapsedTimeSinceLastSave);
         console.log("MatinPremiumAPI - userInfoPromise: TIME_IN_MS", TIME_IN_MS);
-        elapsedTimeSinceLastSave < TIME_IN_MS ? resolve(UserInfoLocalStorge.getUserInfo()):resolve(axios.get(userInfoUrl))
+        elapsedTimeSinceLastSave < TIME_IN_MS ? resolve(UserInfoLocalStorge.getUserInfo()):resolve(axios({method: 'get', url: userInfoUrl,headers:headersObject}))
        }else{
          console.log("MatinPremiumAPI - userInfoPromise: else-case UserInfoLocalStorge.getUserInfo()", UserInfoLocalStorge.getUserInfo());
          resolve( axios.get(userInfoUrl));
@@ -84,36 +87,82 @@ module.exports = {
       .catch( error => error)
   },
 
+ /*
+  the below service is used to perform toggleLike nd toggleFavorite
+ */
+  toggleCard:function(cardId,toggleFor){
+    var toggleUrl ;
+    toggleFor === Constants.TOGGLE_LIKE ? toggleUrl = toggleLikeUrl: toggleUrl=toggleFavoriteUrl
+    return  axios({
+        method: 'post',
+        url: toggleUrl,
+        data:{cardId},
+        headers: headersObject
+      }).then(function (response) {
+          console.log("toggleCard ["+toggleFor+"] response:",response);
+          return response.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+          return error;
+        });
+  },
 
-   toggleLike:function(cardId){
-     axios.post('/user', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+/*
+ service is used to delete a card by it's ID
+*/
+  deleteCard:function(cardId){
+    return  axios({
+        method: 'post',
+        url: deleteCardUrl,
+        data:{cardId},
+        headers: headersObject
+      }).then(function (response) {
+          console.log("deleteCard - response:",response);
+          return response.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+          return error;
+        });
 
   },
 
-   getUserInfoTest:function(){
-      // Send a POST request
-      return  axios({
-          method: 'get',
-          url: 'http://dev.lematindusoir.ch/wp-json/user/getUserInfos',
-          headers: {'C1-User-ID': 665}
-        }).then(function (response) {
-            console.log(response);
-            return response.data;
-          })
-          .catch(function (error) {
-            console.log(error.message);
-            return error;
-          });
-   }
+  /*
+   service is used to remove a card from the history
+  */
+ removeCardFromHistory:function(cardId){
+    return  axios({
+        method: 'post',
+        url: removeCardFromHistoryUrl,
+        data:{cardId},
+        headers: headersObject
+      }).then(function (response) {
+          console.log("removeCardFromHistory -response:",response);
+          return response.data;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+          return error;
+        });
+  }
+
+  // ,getUserInfoTest:function(){
+  //     // Send a  request with hearde
+  //     return  axios({
+  //         method: 'get',
+  //         url: 'http://dev.lematindusoir.ch/wp-json/user/getUserInfos',
+  //         headers:{'C1-User-ID':665}
+  //       }).then(function (response) {
+  //           console.log(response);
+  //           console.log(response.data);
+  //           return response.data;
+  //         })
+  //         .catch(function (error) {
+  //           console.log(error.message);
+  //           return error;
+  //         });
+  //  }
 
   // getCards: function(param) {
   //   var encodedParam = encodeURIComponent(param);
