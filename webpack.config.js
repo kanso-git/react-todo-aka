@@ -26,6 +26,7 @@ module.exports = {
     modulesDirectories:[
       'node_modules',
       './app/components',
+      './app/components/login',
       './app/components/cards',
       './app/components/nav-menu',
       './app/components/nav-menu/left-items',

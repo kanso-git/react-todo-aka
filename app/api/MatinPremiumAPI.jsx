@@ -4,10 +4,11 @@ var moment = require('moment');
 
 
 var UserInfoLocalStorge = require("UserInfoLocalStorge");
+var Environment = require('Environment');
 var Constants = require('Constants');
 
-const LMP_API_URL = Constants.BASE_URL;
-const TIME_IN_MS =Constants.SESSION_DURATION_USERINFO;
+const LMP_API_URL = Environment.BASE_URL;
+const TIME_IN_MS =  Environment.SESSION_DURATION_USERINFO;
 
 var startingCardsUrl = `${LMP_API_URL}getStartingCards/0`;
 var userInfoUrl = `${LMP_API_URL}user/getUserInfos`;

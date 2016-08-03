@@ -1,5 +1,5 @@
 var React = require('react');
-
+var {Link, IndexLink} = require('react-router');
 
 var RightMenu = React.createClass({
 
@@ -11,6 +11,11 @@ var RightMenu = React.createClass({
         <div className={className}>
         	<table className="tablec">
             <tbody>
+            <tr>
+               <td className="tabletd">
+                 <Link to="/login">  <p className="text_right">Login</p></Link>
+              </td>
+            </tr>
         		<tr>
         			<td className="tabletd">
         				<p className="text_right">Mon Compte</p>
